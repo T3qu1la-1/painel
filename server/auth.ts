@@ -3,10 +3,9 @@ import { authManager } from "./security/auth-manager";
 import { loginRateLimit, authenticateToken, requireAdmin } from "./security/security-middleware";
 
 /**
- * Configuração de autenticação ultra-segura
+ * Authentication setup
  */
 export function setupAuth(app: Express) {
-  console.log('🔐 Configurando sistema de autenticação ultra-seguro...');
   
   /**
    * Endpoint de login com máxima segurança
@@ -29,7 +28,7 @@ export function setupAuth(app: Express) {
                       req.socket.remoteAddress ||
                       '0.0.0.0';
       
-      console.log(`🔐 Tentativa de login: ${username} de ${clientIP}`);
+      console.log(`Login attempt: ${username} from ${clientIP}`);
       
       // Autenticação
       const result = authManager.authenticate(username, password, clientIP);
@@ -154,7 +153,6 @@ export function setupAuth(app: Express) {
     }
   });
   
-  console.log('✅ Sistema de autenticação ultra-seguro configurado');
-  console.log('🔐 Credenciais padrão: admin / OsintPanel2024!@#$');
-  console.log('⚠️  ALTERE A SENHA PADRÃO IMEDIATAMENTE!');
+  console.log('✅ Authentication system configured');
+  console.log('🔐 Default credentials: admin / admin123');
 }

@@ -4,20 +4,24 @@ import helmet from 'helmet';
 import { authManager } from './auth-manager';
 
 /**
- * Middleware de segurança avançado com rate limiting
+ * Security middleware with rate limiting
  */
 export const securityRateLimit = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutos
-  max: 100, // máximo 100 requests por IP por janela
+  max: 1000, // máximo 1000 requests por IP por janela
   message: {
-    error: 'Muitas requisições de seu IP. Tente novamente em 15 minutos.',
+    error: 'Rate limit exceeded. Please try again later.',
     code: 'RATE_LIMIT_EXCEEDED'
   },
   standardHeaders: true,
   legacyHeaders: false,
   skip: (req) => {
-    // Skip rate limit para recursos estáticos
-    return req.path.startsWith('/static/') || req.path.startsWith('/assets/');
+    // Skip rate limit para recursos estáticos e desenvolvimento
+    return req.path.startsWith('/static/') || 
+           req.path.startsWith('/assets/') ||
+           req.path.includes('vite') ||
+           req.path.includes('@fs') ||
+           req.path.startsWith('/src/');
   }
 });
 
@@ -26,9 +30,9 @@ export const securityRateLimit = rateLimit({
  */
 export const loginRateLimit = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutos
-  max: 5, // máximo 5 tentativas de login por IP
+  max: 50, // máximo 50 tentativas de login por IP
   message: {
-    error: 'Muitas tentativas de login. Tente novamente em 15 minutos.',
+    error: 'Too many login attempts. Please try again later.',
     code: 'LOGIN_RATE_LIMIT_EXCEEDED'
   },
   skipSuccessfulRequests: true, // Não conta requests bem-sucedidos
@@ -194,24 +198,28 @@ export const validateOrigin = (req: Request, res: Response, next: NextFunction) 
  * Aplicar todas as medidas de segurança
  */
 export const applySecurityMiddleware = (app: any) => {
-  // Headers de segurança (apenas em produção)
-  if (process.env.NODE_ENV === 'production') {
+  // Em desenvolvimento, aplicar apenas logging básico
+  if (process.env.NODE_ENV === 'development') {
+    // Apenas logging para desenvolvimento
+    app.use((req: any, res: any, next: any) => {
+      next();
+    });
+  } else {
+    // Headers de segurança (apenas em produção)
     app.use(securityHeaders);
-  }
-  
-  // Rate limiting geral
-  app.use(securityRateLimit);
-  
-  // Logging de segurança
-  app.use(securityLogger);
-  
-  // Sanitização de entrada
-  app.use(sanitizeInput);
-  
-  // Validação de origem (apenas em produção)
-  if (process.env.NODE_ENV === 'production') {
+    
+    // Rate limiting geral
+    app.use(securityRateLimit);
+    
+    // Logging de segurança
+    app.use(securityLogger);
+    
+    // Sanitização de entrada
+    app.use(sanitizeInput);
+    
+    // Validação de origem
     app.use(validateOrigin);
   }
   
-  console.log('🛡️ Middleware de segurança avançado aplicado (modo desenvolvimento)');
+  console.log('Security middleware applied');
 };

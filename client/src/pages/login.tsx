@@ -51,7 +51,7 @@ export default function Login() {
       
       toast({
         title: "Login realizado!",
-        description: "Bem-vindo ao Painel OSINT Ultra-Seguro",
+        description: "Bem-vindo ao Painel OSINT",
       });
       
       setLocation("/");
@@ -79,8 +79,8 @@ export default function Login() {
             <h1 className="text-4xl font-bold text-white dolp-text-glow">Painel OSINT</h1>
           </div>
           <div className="space-y-1">
-            <p className="text-gray-400 text-lg">Sistema OSINT Ultra-Seguro</p>
-            <p className="dolp-subtitle">Painel protegido com criptografia AES-256</p>
+            <p className="text-gray-400 text-lg">Painel OSINT da Equipe</p>
+            <p className="dolp-subtitle">Sistema de Inteligência</p>
           </div>
           
           {/* Credenciais de teste - remover em produção */}

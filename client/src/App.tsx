@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { useAuth } from "@/hooks/useAuth";
 import NotFound from "@/pages/not-found";
 import Dashboard from "@/pages/dashboard";
+import { MainLayout } from "@/components/layout/MainLayout";
 import EmailLookup from "@/pages/email-lookup";
 import DomainAnalysis from "@/pages/domain-analysis";
 import IPGeolocation from "@/pages/ip-geolocation";
@@ -17,13 +18,13 @@ import Login from "@/pages/login";
 import Register from "@/pages/register";
 import Admin from "@/pages/admin";
 
-// New OSINT Category Pages
-import EmailOSINT from "@/pages/people/EmailOSINT";
-import UsernameCheck from "@/pages/people/UsernameCheck";
-import TwitterOSINT from "@/pages/social/TwitterOSINT";
-import DomainsAndDNS from "@/pages/technical/DomainsAndDNS";
-import ThreatIntelligence from "@/pages/technical/ThreatIntelligence";
-import GeneralSearchEngines from "@/pages/search/GeneralSearchEngines";
+// New OSINT Pages
+import EmailBreachCheck from "@/pages/osint/EmailBreachCheck";
+import IPGeolocationPage from "@/pages/osint/IPGeolocation";
+import UsernameCheckPage from "@/pages/osint/UsernameCheck";
+import HashGenerator from "@/pages/tools/HashGenerator";
+import Base64Tool from "@/pages/tools/Base64Tool";
+import PasswordGenerator from "@/pages/tools/PasswordGenerator";
 
 function AuthProtectedRoute({ component: Component }: { component: React.ComponentType }) {
   const { isAuthenticated, isApproved, isLoading } = useAuth();
@@ -61,7 +62,11 @@ function AuthProtectedRoute({ component: Component }: { component: React.Compone
     );
   }
 
-  return <Component />;
+  return (
+    <MainLayout>
+      <Component />
+    </MainLayout>
+  );
 }
 
 function Router() {
@@ -81,46 +86,34 @@ function Router() {
       <Route path="/bookmarks" component={() => <AuthProtectedRoute component={Bookmarks} />} />
       <Route path="/admin" component={() => <AuthProtectedRoute component={Admin} />} />
       
-      {/* New Hierarchical OSINT Routes */}
+      {/* New OSINT Routes - organized by menu structure */}
       
-      {/* People Investigation */}
-      <Route path="/people/email" component={() => <AuthProtectedRoute component={EmailOSINT} />} />
-      <Route path="/people/phone" component={() => <AuthProtectedRoute component={PhoneLookup} />} />
-      <Route path="/people/username" component={() => <AuthProtectedRoute component={UsernameCheck} />} />
-      <Route path="/people/general" component={() => <AuthProtectedRoute component={Dashboard} />} />
+      {/* OSINT Menu */}
+      <Route path="/osint/email" component={() => <AuthProtectedRoute component={EmailBreachCheck} />} />
+      <Route path="/osint/domain" component={() => <AuthProtectedRoute component={DomainAnalysis} />} />
+      <Route path="/osint/ip" component={() => <AuthProtectedRoute component={IPGeolocationPage} />} />
+      <Route path="/osint/phone" component={() => <AuthProtectedRoute component={PhoneLookup} />} />
+      <Route path="/osint/social" component={() => <AuthProtectedRoute component={SocialMedia} />} />
+      <Route path="/osint/username" component={() => <AuthProtectedRoute component={UsernameCheckPage} />} />
+      <Route path="/osint/whois" component={() => <AuthProtectedRoute component={DomainAnalysis} />} />
       
-      {/* Social Media */}
-      <Route path="/social/twitter" component={() => <AuthProtectedRoute component={TwitterOSINT} />} />
-      <Route path="/social/facebook" component={() => <AuthProtectedRoute component={Dashboard} />} />
-      <Route path="/social/instagram" component={() => <AuthProtectedRoute component={Dashboard} />} />
-      <Route path="/social/linkedin" component={() => <AuthProtectedRoute component={Dashboard} />} />
-      <Route path="/social/reddit" component={() => <AuthProtectedRoute component={Dashboard} />} />
-      <Route path="/social/telegram" component={() => <AuthProtectedRoute component={Dashboard} />} />
-      <Route path="/social/github" component={() => <AuthProtectedRoute component={Dashboard} />} />
+      {/* Tools Menu */}
+      <Route path="/tools/hash" component={() => <AuthProtectedRoute component={HashGenerator} />} />
+      <Route path="/tools/base64" component={() => <AuthProtectedRoute component={Base64Tool} />} />
+      <Route path="/tools/url" component={() => <AuthProtectedRoute component={Dashboard} />} />
+      <Route path="/tools/portscan" component={() => <AuthProtectedRoute component={Dashboard} />} />
+      <Route path="/tools/password" component={() => <AuthProtectedRoute component={PasswordGenerator} />} />
+      <Route path="/tools/qrcode" component={() => <AuthProtectedRoute component={Dashboard} />} />
       
-      {/* Technical Analysis */}
-      <Route path="/technical/domains" component={() => <AuthProtectedRoute component={DomainsAndDNS} />} />
-      <Route path="/technical/ip" component={() => <AuthProtectedRoute component={IPGeolocation} />} />
-      <Route path="/technical/threat" component={() => <AuthProtectedRoute component={ThreatIntelligence} />} />
-      <Route path="/technical/code" component={() => <AuthProtectedRoute component={Dashboard} />} />
-      <Route path="/technical/advanced" component={() => <AuthProtectedRoute component={Dashboard} />} />
+      {/* Breach Check Menu */}
+      <Route path="/breach/email" component={() => <AuthProtectedRoute component={EmailBreachCheck} />} />
+      <Route path="/breach/password" component={() => <AuthProtectedRoute component={Dashboard} />} />
+      <Route path="/breach/domain" component={() => <AuthProtectedRoute component={Dashboard} />} />
       
-      {/* Search Engines */}
-      <Route path="/search-engines/general" component={() => <AuthProtectedRoute component={GeneralSearchEngines} />} />
-      <Route path="/search-engines/specialty" component={() => <AuthProtectedRoute component={Dashboard} />} />
-      <Route path="/search-engines/private" component={() => <AuthProtectedRoute component={Dashboard} />} />
-      <Route path="/search-engines/national" component={() => <AuthProtectedRoute component={Dashboard} />} />
-      
-      {/* Media & Content */}
-      <Route path="/media/images" component={() => <AuthProtectedRoute component={Dashboard} />} />
-      <Route path="/media/documents" component={() => <AuthProtectedRoute component={Dashboard} />} />
-      <Route path="/media/monitoring" component={() => <AuthProtectedRoute component={Dashboard} />} />
-      <Route path="/media/factcheck" component={() => <AuthProtectedRoute component={Dashboard} />} />
-      
-      {/* Special Tools */}
-      <Route path="/special/darkweb" component={() => <AuthProtectedRoute component={Dashboard} />} />
-      <Route path="/special/maritime" component={() => <AuthProtectedRoute component={Dashboard} />} />
-      <Route path="/special/gaming" component={() => <AuthProtectedRoute component={Dashboard} />} />
+      {/* Data Menu */}
+      <Route path="/data/history" component={() => <AuthProtectedRoute component={SearchHistory} />} />
+      <Route path="/data/bookmarks" component={() => <AuthProtectedRoute component={Bookmarks} />} />
+      <Route path="/data/export" component={() => <AuthProtectedRoute component={Dashboard} />} />
       
       <Route component={NotFound} />
     </Switch>
