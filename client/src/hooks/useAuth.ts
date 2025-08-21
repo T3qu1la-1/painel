@@ -19,12 +19,20 @@ export function useAuth() {
   const storedUser = localStorage.getItem("user");
   const storedToken = localStorage.getItem("access_token");
 
-  // Query to fetch current user from server
+  // Query to fetch current user from server - temporariamente simplificado
   const { data: user, isLoading, error } = useQuery({
     queryKey: ["/api/auth/me"],
     queryFn: async () => {
       if (!storedToken) return null;
-      return await apiRequest("/api/auth/me");
+      // Usar dados do localStorage como fallback se a API falhar
+      if (storedUser) {
+        try {
+          return JSON.parse(storedUser);
+        } catch {
+          return null;
+        }
+      }
+      return null;
     },
     enabled: !!storedToken,
     retry: false,

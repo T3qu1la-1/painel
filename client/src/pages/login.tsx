@@ -54,7 +54,8 @@ export default function Login() {
         description: "Bem-vindo ao Painel OSINT",
       });
       
-      setLocation("/");
+      // Force reload to ensure authentication state is updated
+      window.location.href = "/";
     },
     onError: (error: any) => {
       toast({
