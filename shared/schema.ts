@@ -1,101 +1,101 @@
 import { sql } from "drizzle-orm";
-import { pgTable, text, varchar, timestamp, jsonb, boolean, integer } from "drizzle-orm/pg-core";
+import { sqliteTable, text, integer, blob, index } from "drizzle-orm/sqlite-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
 // User authentication system
-export const users = pgTable("users", {
-  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
-  email: varchar("email").unique().notNull(),
-  username: varchar("username").unique().notNull(),
+export const users = sqliteTable("users", {
+  id: text("id").primaryKey().default(sql`(lower(hex(randomblob(16))))`),
+  email: text("email").unique().notNull(),
+  username: text("username").unique().notNull(),
   passwordHash: text("password_hash").notNull(),
-  role: varchar("role", { length: 20 }).notNull().default("user"), // user, admin, super_admin
-  isApproved: boolean("is_approved").notNull().default(false),
-  isActive: boolean("is_active").notNull().default(true),
-  lastLogin: timestamp("last_login"),
-  createdAt: timestamp("created_at").defaultNow().notNull(),
-  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+  role: text("role").notNull().default("user"), // user, admin, super_admin
+  isApproved: integer("is_approved", { mode: "boolean" }).notNull().default(false),
+  isActive: integer("is_active", { mode: "boolean" }).notNull().default(true),
+  lastLogin: integer("last_login", { mode: "timestamp" }),
+  createdAt: integer("created_at", { mode: "timestamp" }).default(sql`(unixepoch())`).notNull(),
+  updatedAt: integer("updated_at", { mode: "timestamp" }).default(sql`(unixepoch())`).notNull(),
 });
 
 // Session management
-export const sessions = pgTable("sessions", {
-  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
-  userId: varchar("user_id").references(() => users.id).notNull(),
+export const sessions = sqliteTable("sessions", {
+  id: text("id").primaryKey().default(sql`(lower(hex(randomblob(16))))`),
+  userId: text("user_id").references(() => users.id).notNull(),
   token: text("token").notNull().unique(),
-  expiresAt: timestamp("expires_at").notNull(),
-  createdAt: timestamp("created_at").defaultNow().notNull(),
+  expiresAt: integer("expires_at", { mode: "timestamp" }).notNull(),
+  createdAt: integer("created_at", { mode: "timestamp" }).default(sql`(unixepoch())`).notNull(),
 });
 
 // OSINT searches
-export const searches = pgTable("searches", {
-  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
-  userId: varchar("user_id").references(() => users.id).notNull(),
+export const searches = sqliteTable("searches", {
+  id: text("id").primaryKey().default(sql`(lower(hex(randomblob(16))))`),
+  userId: text("user_id").references(() => users.id).notNull(),
   query: text("query").notNull(),
-  searchType: varchar("search_type", { length: 50 }).notNull(), // email, domain, ip, phone, social, shodan, etc
-  category: varchar("category", { length: 50 }).notNull().default("osint"), // osint, security, scripts
-  results: jsonb("results"),
-  status: varchar("status", { length: 20 }).notNull().default("pending"), // pending, completed, failed
-  isEncrypted: boolean("is_encrypted").notNull().default(true),
-  createdAt: timestamp("created_at").defaultNow().notNull(),
+  searchType: text("search_type").notNull(), // email, domain, ip, phone, social, shodan, etc
+  category: text("category").notNull().default("osint"), // osint, security, scripts
+  results: text("results", { mode: "json" }),
+  status: text("status").notNull().default("pending"), // pending, completed, failed
+  isEncrypted: integer("is_encrypted", { mode: "boolean" }).notNull().default(true),
+  createdAt: integer("created_at", { mode: "timestamp" }).default(sql`(unixepoch())`).notNull(),
 });
 
 // Bookmarks system
-export const bookmarks = pgTable("bookmarks", {
-  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
-  userId: varchar("user_id").references(() => users.id).notNull(),
-  searchId: varchar("search_id").references(() => searches.id).notNull(),
+export const bookmarks = sqliteTable("bookmarks", {
+  id: text("id").primaryKey().default(sql`(lower(hex(randomblob(16))))`),
+  userId: text("user_id").references(() => users.id).notNull(),
+  searchId: text("search_id").references(() => searches.id).notNull(),
   title: text("title").notNull(),
   notes: text("notes"),
-  tags: text("tags").array(),
-  isEncrypted: boolean("is_encrypted").notNull().default(true),
-  createdAt: timestamp("created_at").defaultNow().notNull(),
+  tags: text("tags", { mode: "json" }),
+  isEncrypted: integer("is_encrypted", { mode: "boolean" }).notNull().default(true),
+  createdAt: integer("created_at", { mode: "timestamp" }).default(sql`(unixepoch())`).notNull(),
 });
 
 // User preferences and settings
-export const userSettings = pgTable("user_settings", {
-  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
-  userId: varchar("user_id").references(() => users.id).notNull().unique(),
-  theme: varchar("theme", { length: 10 }).notNull().default("dark"), // dark, light
-  language: varchar("language", { length: 5 }).notNull().default("pt-BR"),
-  encryptionEnabled: boolean("encryption_enabled").notNull().default(true),
-  notificationsEnabled: boolean("notifications_enabled").notNull().default(true),
-  apiKeys: jsonb("api_keys"), // Encrypted API keys storage
-  preferences: jsonb("preferences"),
-  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+export const userSettings = sqliteTable("user_settings", {
+  id: text("id").primaryKey().default(sql`(lower(hex(randomblob(16))))`),
+  userId: text("user_id").references(() => users.id).notNull().unique(),
+  theme: text("theme").notNull().default("dark"), // dark, light
+  language: text("language").notNull().default("pt-BR"),
+  encryptionEnabled: integer("encryption_enabled", { mode: "boolean" }).notNull().default(true),
+  notificationsEnabled: integer("notifications_enabled", { mode: "boolean" }).notNull().default(true),
+  apiKeys: text("api_keys", { mode: "json" }), // Encrypted API keys storage
+  preferences: text("preferences", { mode: "json" }),
+  updatedAt: integer("updated_at", { mode: "timestamp" }).default(sql`(unixepoch())`).notNull(),
 });
 
 // Activity logs
-export const activityLogs = pgTable("activity_logs", {
-  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
-  userId: varchar("user_id").references(() => users.id).notNull(),
-  action: varchar("action", { length: 100 }).notNull(),
-  details: jsonb("details"),
-  ipAddress: varchar("ip_address", { length: 45 }),
+export const activityLogs = sqliteTable("activity_logs", {
+  id: text("id").primaryKey().default(sql`(lower(hex(randomblob(16))))`),
+  userId: text("user_id").references(() => users.id).notNull(),
+  action: text("action").notNull(),
+  details: text("details", { mode: "json" }),
+  ipAddress: text("ip_address"),
   userAgent: text("user_agent"),
-  createdAt: timestamp("created_at").defaultNow().notNull(),
+  createdAt: integer("created_at", { mode: "timestamp" }).default(sql`(unixepoch())`).notNull(),
 });
 
 // Scripts and tools management
-export const scripts = pgTable("scripts", {
-  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
-  userId: varchar("user_id").references(() => users.id).notNull(),
+export const scripts = sqliteTable("scripts", {
+  id: text("id").primaryKey().default(sql`(lower(hex(randomblob(16))))`),
+  userId: text("user_id").references(() => users.id).notNull(),
   name: text("name").notNull(),
   description: text("description"),
-  category: varchar("category", { length: 50 }).notNull(), // termux, bash, python, etc
+  category: text("category").notNull(), // termux, bash, python, etc
   scriptContent: text("script_content").notNull(),
-  isPublic: boolean("is_public").notNull().default(false),
-  isEncrypted: boolean("is_encrypted").notNull().default(true),
-  tags: text("tags").array(),
+  isPublic: integer("is_public", { mode: "boolean" }).notNull().default(false),
+  isEncrypted: integer("is_encrypted", { mode: "boolean" }).notNull().default(true),
+  tags: text("tags", { mode: "json" }),
   executionCount: integer("execution_count").notNull().default(0),
-  createdAt: timestamp("created_at").defaultNow().notNull(),
-  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+  createdAt: integer("created_at", { mode: "timestamp" }).default(sql`(unixepoch())`).notNull(),
+  updatedAt: integer("updated_at", { mode: "timestamp" }).default(sql`(unixepoch())`).notNull(),
 });
 
 // System statistics
-export const stats = pgTable("stats", {
-  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
-  userId: varchar("user_id").references(() => users.id),
-  date: timestamp("date").defaultNow().notNull(),
+export const stats = sqliteTable("stats", {
+  id: text("id").primaryKey().default(sql`(lower(hex(randomblob(16))))`),
+  userId: text("user_id").references(() => users.id),
+  date: integer("date", { mode: "timestamp" }).default(sql`(unixepoch())`).notNull(),
   todaySearches: integer("today_searches").notNull().default(0),
   totalSearches: integer("total_searches").notNull().default(0),
   successfulSearches: integer("successful_searches").notNull().default(0),
@@ -103,6 +103,14 @@ export const stats = pgTable("stats", {
   totalScripts: integer("total_scripts").notNull().default(0),
   activeUsers: integer("active_users").notNull().default(0),
 });
+
+// Indexes for better performance
+export const userEmailIndex = index("user_email_idx").on(users.email);
+export const userUsernameIndex = index("user_username_idx").on(users.username);
+export const sessionTokenIndex = index("session_token_idx").on(sessions.token);
+export const searchUserIndex = index("search_user_idx").on(searches.userId);
+export const searchTypeIndex = index("search_type_idx").on(searches.searchType);
+export const bookmarkUserIndex = index("bookmark_user_idx").on(bookmarks.userId);
 
 // Insert schemas
 export const insertUserSchema = createInsertSchema(users).omit({

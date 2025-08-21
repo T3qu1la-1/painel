@@ -68,21 +68,24 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 flex items-center justify-center p-4">
-      <div className="w-full max-w-md space-y-6">
+    <div className="min-h-screen dolp-bg-animated dolp-matrix-bg flex items-center justify-center p-4">
+      <div className="w-full max-w-md space-y-6 dolp-fade-in">
         {/* Header */}
-        <div className="text-center space-y-2">
-          <div className="flex items-center justify-center space-x-2">
-            <Shield className="h-8 w-8 text-blue-500" />
-            <h1 className="text-3xl font-bold text-white">Painel DOLP</h1>
+        <div className="text-center space-y-3">
+          <div className="flex items-center justify-center space-x-3 dolp-slide-in">
+            <Shield className="h-10 w-10 text-blue-500 dolp-glow dolp-float" />
+            <h1 className="text-4xl font-bold text-white dolp-text-glow">Painel DOLP</h1>
           </div>
-          <p className="text-gray-400">Sistema de Inteligência e Segurança</p>
+          <div className="space-y-1">
+            <p className="text-gray-400 text-lg">Sistema de Inteligência e Segurança</p>
+            <p className="dolp-subtitle">Este painel é destinado aos membros da DOLP</p>
+          </div>
         </div>
 
-        <Card className="bg-gray-800/50 border-gray-700 backdrop-blur-sm">
+        <Card className="dolp-card dolp-scan-effect">
           <CardHeader className="space-y-1">
-            <CardTitle className="text-2xl text-white flex items-center space-x-2">
-              <Lock className="h-5 w-5" />
+            <CardTitle className="text-2xl text-white flex items-center space-x-2 dolp-slide-in">
+              <Lock className="h-5 w-5 dolp-pulse" />
               <span>Entrar</span>
             </CardTitle>
             <CardDescription className="text-gray-400">
@@ -101,7 +104,7 @@ export default function Login() {
                   <Input
                     id="login"
                     {...register("login")}
-                    className="pl-10 bg-gray-700/50 border-gray-600 text-white placeholder-gray-400 focus:border-blue-500"
+                    className="pl-10 dolp-input text-white placeholder-gray-400"
                     placeholder="Digite seu email ou nome de usuário"
                     data-testid="input-login"
                   />
@@ -122,7 +125,7 @@ export default function Login() {
                     id="password"
                     type={showPassword ? "text" : "password"}
                     {...register("password")}
-                    className="pl-10 pr-10 bg-gray-700/50 border-gray-600 text-white placeholder-gray-400 focus:border-blue-500"
+                    className="pl-10 pr-10 dolp-input text-white placeholder-gray-400"
                     placeholder="Digite sua senha"
                     data-testid="input-password"
                   />
@@ -144,10 +147,17 @@ export default function Login() {
               <Button
                 type="submit"
                 disabled={loginMutation.isPending}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                className="w-full dolp-button text-white font-semibold"
                 data-testid="button-login"
               >
-                {loginMutation.isPending ? "Entrando..." : "Entrar"}
+                {loginMutation.isPending ? (
+                  <div className="flex items-center space-x-2">
+                    <div className="dolp-loading"></div>
+                    <span>Entrando...</span>
+                  </div>
+                ) : (
+                  "Entrar"
+                )}
               </Button>
 
               {/* Register Link */}

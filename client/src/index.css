@@ -177,3 +177,306 @@
 .osint-status-info {
   @apply bg-blue-600 text-white;
 }
+
+/* Professional DOLP Animations */
+@keyframes dolpFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dolpSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes dolpGlow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.4);
+  }
+}
+
+@keyframes dolpPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes dolpMatrixRain {
+  0% {
+    transform: translateY(-100vh);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+@keyframes dolpScanLine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+@keyframes dolpFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes dolpRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dolpBreathe {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.02);
+    opacity: 1;
+  }
+}
+
+/* Animation Classes */
+.dolp-fade-in {
+  animation: dolpFadeIn 0.6s ease-out forwards;
+}
+
+.dolp-slide-in {
+  animation: dolpSlideIn 0.5s ease-out forwards;
+}
+
+.dolp-glow {
+  animation: dolpGlow 2s ease-in-out infinite;
+}
+
+.dolp-pulse {
+  animation: dolpPulse 2s ease-in-out infinite;
+}
+
+.dolp-float {
+  animation: dolpFloat 3s ease-in-out infinite;
+}
+
+.dolp-rotate {
+  animation: dolpRotate 10s linear infinite;
+}
+
+.dolp-breathe {
+  animation: dolpBreathe 4s ease-in-out infinite;
+}
+
+/* Background Effects */
+.dolp-bg-animated::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(147, 51, 234, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, rgba(59, 130, 246, 0.02) 0%, rgba(147, 51, 234, 0.02) 100%);
+  pointer-events: none;
+  z-index: -1;
+  animation: dolpBreathe 8s ease-in-out infinite;
+}
+
+.dolp-matrix-bg::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 98px,
+      rgba(59, 130, 246, 0.03) 100px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 98px,
+      rgba(59, 130, 246, 0.03) 100px
+    );
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.5;
+}
+
+/* Interactive Elements */
+.dolp-card {
+  @apply transition-all duration-300 ease-in-out;
+  @apply hover:scale-105 hover:shadow-2xl;
+  background: rgba(30, 41, 59, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.dolp-card:hover {
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.dolp-button {
+  @apply relative overflow-hidden;
+  @apply transition-all duration-300 ease-in-out;
+  @apply hover:scale-105 active:scale-95;
+  background: linear-gradient(135deg, #3b82f6, #1e40af);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.dolp-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease-in-out;
+}
+
+.dolp-button:hover::before {
+  left: 100%;
+}
+
+.dolp-input {
+  @apply transition-all duration-300 ease-in-out;
+  @apply focus:scale-105 focus:shadow-lg;
+  background: rgba(30, 41, 59, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+.dolp-input:focus {
+  border-color: rgba(59, 130, 246, 0.6);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+/* Loading Animations */
+.dolp-loading {
+  @apply inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(59, 130, 246, 0.3);
+  border-radius: 50%;
+  border-top-color: #3b82f6;
+  animation: dolpRotate 1s ease-in-out infinite;
+}
+
+.dolp-loading-large {
+  @apply inline-block;
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(59, 130, 246, 0.3);
+  border-radius: 50%;
+  border-top-color: #3b82f6;
+  animation: dolpRotate 1s ease-in-out infinite;
+}
+
+/* Text Effects */
+.dolp-text-glow {
+  text-shadow: 
+    0 0 5px rgba(59, 130, 246, 0.5),
+    0 0 10px rgba(59, 130, 246, 0.3),
+    0 0 15px rgba(59, 130, 246, 0.2);
+}
+
+.dolp-subtitle {
+  @apply text-gray-400 text-sm font-light tracking-wide;
+  font-family: 'JetBrains Mono', monospace;
+  opacity: 0.8;
+  animation: dolpFadeIn 1s ease-out 0.5s both;
+}
+
+/* Security Theme */
+.dolp-security-border {
+  border-image: linear-gradient(45deg, #3b82f6, #1e40af, #3b82f6) 1;
+  animation: dolpGlow 3s ease-in-out infinite;
+}
+
+.dolp-scan-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.dolp-scan-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+  animation: dolpScanLine 2s ease-in-out infinite;
+}
+
+/* Responsive Animations */
+@media (max-width: 768px) {
+  .dolp-card:hover {
+    transform: scale(1.02);
+  }
+  
+  .dolp-button:hover {
+    transform: scale(1.02);
+  }
+  
+  .dolp-input:focus {
+    transform: scale(1.02);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .dolp-fade-in,
+  .dolp-slide-in,
+  .dolp-glow,
+  .dolp-pulse,
+  .dolp-float,
+  .dolp-rotate,
+  .dolp-breathe {
+    animation: none;
+  }
+  
+  .dolp-card,
+  .dolp-button,
+  .dolp-input {
+    transition: none;
+  }
+}
