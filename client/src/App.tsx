@@ -3,6 +3,7 @@ import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { useAuth } from "@/hooks/useAuth";
 import NotFound from "@/pages/not-found";
 import Dashboard from "@/pages/dashboard";
 import EmailLookup from "@/pages/email-lookup";
@@ -12,18 +13,63 @@ import SocialMedia from "@/pages/social-media";
 import PhoneLookup from "@/pages/phone-lookup";
 import SearchHistory from "@/pages/search-history";
 import Bookmarks from "@/pages/bookmarks";
+import Login from "@/pages/login";
+import Register from "@/pages/register";
+import Admin from "@/pages/admin";
+
+function AuthProtectedRoute({ component: Component }: { component: React.ComponentType }) {
+  const { isAuthenticated, isApproved, isLoading } = useAuth();
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gray-900 flex items-center justify-center">
+        <div className="text-center space-y-4">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 mx-auto"></div>
+          <p className="text-gray-400">Carregando...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return <Login />;
+  }
+
+  if (!isApproved) {
+    return (
+      <div className="min-h-screen bg-gray-900 flex items-center justify-center p-4">
+        <div className="max-w-md text-center space-y-4">
+          <div className="bg-yellow-900/20 border border-yellow-500/20 rounded-lg p-6">
+            <h2 className="text-xl font-bold text-yellow-400 mb-2">Aguardando Aprovação</h2>
+            <p className="text-yellow-200 mb-4">
+              Sua conta foi criada com sucesso, mas ainda precisa ser aprovada por um administrador.
+            </p>
+            <p className="text-gray-400 text-sm">
+              Você receberá acesso assim que sua conta for aprovada. Entre em contato com o administrador se necessário.
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return <Component />;
+}
 
 function Router() {
   return (
     <Switch>
-      <Route path="/" component={Dashboard} />
-      <Route path="/email-lookup" component={EmailLookup} />
-      <Route path="/domain-analysis" component={DomainAnalysis} />
-      <Route path="/ip-geolocation" component={IPGeolocation} />
-      <Route path="/social-media" component={SocialMedia} />
-      <Route path="/phone-lookup" component={PhoneLookup} />
-      <Route path="/search-history" component={SearchHistory} />
-      <Route path="/bookmarks" component={Bookmarks} />
+      <Route path="/login" component={Login} />
+      <Route path="/register" component={Register} />
+      <Route path="/" component={() => <AuthProtectedRoute component={Dashboard} />} />
+      <Route path="/email-lookup" component={() => <AuthProtectedRoute component={EmailLookup} />} />
+      <Route path="/domain-analysis" component={() => <AuthProtectedRoute component={DomainAnalysis} />} />
+      <Route path="/ip-geolocation" component={() => <AuthProtectedRoute component={IPGeolocation} />} />
+      <Route path="/social-media" component={() => <AuthProtectedRoute component={SocialMedia} />} />
+      <Route path="/phone-lookup" component={() => <AuthProtectedRoute component={PhoneLookup} />} />
+      <Route path="/search-history" component={() => <AuthProtectedRoute component={SearchHistory} />} />
+      <Route path="/bookmarks" component={() => <AuthProtectedRoute component={Bookmarks} />} />
+      <Route path="/admin" component={() => <AuthProtectedRoute component={Admin} />} />
       <Route component={NotFound} />
     </Switch>
   );
