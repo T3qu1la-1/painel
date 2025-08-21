@@ -13,6 +13,7 @@ import { setupAuth } from "./auth";
 import { applySecurityMiddleware, authenticateToken, requireAdmin } from "./security/security-middleware";
 import { registerOSINTRoutes } from "./osint-routes";
 import { registerRealAPIRoutes } from "./routes-real-apis";
+import { registerAdminRoutes } from "./admin-routes";
 
 function validateRequest(schema: z.ZodSchema, data: any) {
   try {
@@ -38,6 +39,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
   
   // Registrar APIs reais
   registerRealAPIRoutes(app);
+  
+  // Registrar rotas administrativas
+  registerAdminRoutes(app);
 
   // ========================
   // API ROUTES PROTEGIDAS

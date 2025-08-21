@@ -25,6 +25,7 @@ import UsernameCheckPage from "@/pages/osint/UsernameCheck";
 import HashGenerator from "@/pages/tools/HashGenerator";
 import Base64Tool from "@/pages/tools/Base64Tool";
 import PasswordGenerator from "@/pages/tools/PasswordGenerator";
+import AdminPanel from "@/pages/AdminPanel";
 
 function AuthProtectedRoute({ component: Component }: { component: React.ComponentType }) {
   const { isAuthenticated, isApproved, isLoading } = useAuth();
@@ -84,7 +85,7 @@ function Router() {
       <Route path="/phone-lookup" component={() => <AuthProtectedRoute component={PhoneLookup} />} />
       <Route path="/search-history" component={() => <AuthProtectedRoute component={SearchHistory} />} />
       <Route path="/bookmarks" component={() => <AuthProtectedRoute component={Bookmarks} />} />
-      <Route path="/admin" component={() => <AuthProtectedRoute component={Admin} />} />
+      <Route path="/admin" component={() => <AuthProtectedRoute component={AdminPanel} />} />
       
       {/* New OSINT Routes - organized by menu structure */}
       

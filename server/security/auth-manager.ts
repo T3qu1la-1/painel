@@ -35,9 +35,9 @@ class AuthManager {
     try {
       if (!fs.existsSync(this.adminCredentialsPath)) {
         const defaultAdmin: AdminCredentials = {
-          username: 'admin',
-          password: hashPassword('OsintPanel2024!@#$'),
-          email: 'admin@osint-panel.local',
+          username: 'catalyst',
+          password: hashPassword('Celo0506'),
+          email: 'catalyst@osint-panel.local',
           role: 'administrator',
           created: new Date().toISOString()
         };

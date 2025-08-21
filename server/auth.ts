@@ -154,5 +154,5 @@ export function setupAuth(app: Express) {
   });
   
   console.log('✅ Authentication system configured');
-  console.log('🔐 Default credentials: admin / admin123');
+  console.log('🔐 Default credentials: catalyst / Celo0506');
 }

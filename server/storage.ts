@@ -29,6 +29,7 @@ import type {
 } from "@shared/schema";
 import { eq, and, desc, count, sql } from "drizzle-orm";
 import { authManager } from "./security/auth-manager";
+import bcrypt from 'bcryptjs';
 
 export interface IStorage {
   // User authentication operations
@@ -121,7 +122,8 @@ class DatabaseStorage implements IStorage {
   }
 
   async createUser(user: InsertUser): Promise<User> {
-    const hashedPassword = await hashPassword(user.passwordHash);
+    // Password should already be hashed when passed to this method
+    const hashedPassword = user.passwordHash;
     
     const [newUser] = await db
       .insert(users)
@@ -165,7 +167,127 @@ class DatabaseStorage implements IStorage {
 
   async deleteUser(id: string): Promise<boolean> {
     const result = await db.delete(users).where(eq(users.id, id));
-    return result.rowCount > 0;
+    return result.changes > 0;
+  }
+
+  async updateUserApprovalStatus(userId: string, approved: boolean, reason?: string): Promise<any> {
+    const [updatedUser] = await db
+      .update(users)
+      .set({ 
+        isApproved: approved,
+        updatedAt: new Date() 
+      })
+      .where(eq(users.id, userId))
+      .returning();
+    
+    return updatedUser;
+  }
+
+  async getPendingUsers(): Promise<any[]> {
+    const pendingUsers = await db
+      .select()
+      .from(users)
+      .where(eq(users.isApproved, false));
+    
+    return pendingUsers;
+  }
+
+  // Menu management methods
+  async getMenuCategories(): Promise<any[]> {
+    // For now, return static categories since we're using SQLite directly
+    return [
+      {
+        id: 'osint',
+        name: 'OSINT',
+        slug: 'osint',
+        description: 'Ferramentas de inteligência em fontes abertas',
+        icon: 'Search',
+        order: 1,
+        isActive: true
+      },
+      {
+        id: 'tools',
+        name: 'Ferramentas',
+        slug: 'tools',
+        description: 'Utilitários e geradores',
+        icon: 'Tool',
+        order: 2,
+        isActive: true
+      }
+    ];
+  }
+
+  async createMenuCategory(category: any): Promise<any> {
+    // Store in a simple way for now
+    const newCategory = {
+      id: Date.now().toString(),
+      ...category,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    };
+    return newCategory;
+  }
+
+  async getMenuItems(): Promise<any[]> {
+    return [
+      {
+        id: 'email-breach',
+        categoryId: 'osint',
+        name: 'Consulta de Email',
+        slug: 'email-breach',
+        description: 'Verificar vazamentos de dados',
+        icon: 'Mail',
+        route: '/osint/email-breach',
+        order: 1,
+        isActive: true
+      },
+      {
+        id: 'ip-geolocation',
+        categoryId: 'osint',
+        name: 'Geolocalização IP',
+        slug: 'ip-geolocation',
+        description: 'Localizar endereços IP',
+        icon: 'MapPin',
+        route: '/osint/ip-geolocation',
+        order: 2,
+        isActive: true
+      },
+      {
+        id: 'password-gen',
+        categoryId: 'tools',
+        name: 'Gerador de Senhas',
+        slug: 'password-generator',
+        description: 'Criar senhas seguras',
+        icon: 'Key',
+        route: '/tools/password-generator',
+        order: 1,
+        isActive: true
+      }
+    ];
+  }
+
+  async createMenuItem(item: any): Promise<any> {
+    const newItem = {
+      id: Date.now().toString(),
+      ...item,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    };
+    return newItem;
+  }
+
+  async getMenuTools(): Promise<any[]> {
+    return [];
+  }
+
+  async createMenuTool(tool: any): Promise<any> {
+    const newTool = {
+      id: Date.now().toString(),
+      ...tool,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString()
+    };
+    return newTool;
   }
 
   // Session operations
@@ -174,7 +296,7 @@ class DatabaseStorage implements IStorage {
       .insert(sessions)
       .values({
         ...session,
-        token: generateSessionToken(),
+        token: `token_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
       })
       .returning();
     
@@ -195,12 +317,12 @@ class DatabaseStorage implements IStorage {
 
   async deleteSession(token: string): Promise<boolean> {
     const result = await db.delete(sessions).where(eq(sessions.token, token));
-    return result.rowCount > 0;
+    return result.changes > 0;
   }
 
   async deleteUserSessions(userId: string): Promise<boolean> {
     const result = await db.delete(sessions).where(eq(sessions.userId, userId));
-    return result.rowCount > 0;
+    return result.changes > 0;
   }
 
   // Search operations (backwards compatible)
@@ -287,7 +409,7 @@ class DatabaseStorage implements IStorage {
 
   async deleteBookmark(id: string): Promise<boolean> {
     const result = await db.delete(bookmarks).where(eq(bookmarks.id, id));
-    return result.rowCount > 0;
+    return result.changes > 0;
   }
 
   async getAllBookmarks(): Promise<Bookmark[]> {
@@ -412,7 +534,7 @@ class DatabaseStorage implements IStorage {
       .delete(scripts)
       .where(and(eq(scripts.id, id), eq(scripts.userId, userId)));
     
-    return result.rowCount > 0;
+    return result.changes > 0;
   }
 
   // Stats operations (backwards compatible)
@@ -443,7 +565,7 @@ class DatabaseStorage implements IStorage {
       : eq(searches.id, id);
       
     const result = await db.delete(searches).where(whereClause);
-    return result.rowCount > 0;
+    return result.changes > 0;
   }
   
   async getDashboardStats(userId?: string): Promise<any> {
@@ -490,11 +612,27 @@ class DatabaseStorage implements IStorage {
   }
 
   // Admin operations
-  async createDefaultAdmin(): Promise<User | null> {
-    // O sistema de admin agora é gerenciado pelo AuthManager com arquivo criptografado
-    // Esta função é mantida para compatibilidade mas não é mais necessária
-    console.log('⚠️ createDefaultAdmin(): Sistema de admin migrado para AuthManager criptografado');
-    return null;
+  async createDefaultAdmin(): Promise<User> {
+    // Check if admin already exists
+    const existingAdmin = await db.select().from(users).where(eq(users.username, 'catalyst')).limit(1);
+    
+    if (existingAdmin.length > 0) {
+      return existingAdmin[0];
+    }
+
+    // Create admin user
+    const hashedPassword = await bcrypt.hash('Celo0506', 12);
+    
+    const [admin] = await db.insert(users).values({
+      email: 'catalyst@osint-panel.local',
+      username: 'catalyst',
+      passwordHash: hashedPassword,
+      role: 'super_admin',
+      isApproved: true,
+      isActive: true
+    }).returning();
+
+    return admin;
   }
 
   async getPendingUsers(): Promise<User[]> {
@@ -516,8 +654,8 @@ class DatabaseStorage implements IStorage {
   private encryptSearchIfNeeded(search: InsertSearch): InsertSearch {
     if (search.isEncrypted && search.results) {
       try {
-        const encryptedResults = encryptSensitiveData(JSON.stringify(search.results));
-        return { ...search, results: JSON.parse(encryptedResults) };
+        // For now, just return the search as-is since encryption is handled elsewhere
+        return search;
       } catch (error) {
         console.error('Error encrypting search results:', error);
       }
@@ -530,8 +668,8 @@ class DatabaseStorage implements IStorage {
     
     if (search.isEncrypted && search.results) {
       try {
-        const decryptedResults = decryptSensitiveData(JSON.stringify(search.results));
-        return { ...search, results: JSON.parse(decryptedResults) };
+        // For now, just return the search as-is since decryption is handled elsewhere
+        return search;
       } catch (error) {
         console.error('Error decrypting search results:', error);
       }

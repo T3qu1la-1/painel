@@ -83,13 +83,7 @@ export default function Login() {
             <p className="dolp-subtitle">Sistema de Inteligência</p>
           </div>
           
-          {/* Credenciais de teste - remover em produção */}
-          <div className="bg-blue-900/20 border border-blue-500/30 rounded-lg p-3 text-sm">
-            <p className="text-blue-300 font-medium mb-1">🔐 Credenciais do Administrador:</p>
-            <p className="text-white">Usuário: <code className="bg-gray-800/50 px-1 rounded">admin</code></p>
-            <p className="text-white">Senha: <code className="bg-gray-800/50 px-1 rounded">OsintPanel2024!@#$</code></p>
-            <p className="text-xs text-blue-200 mt-1">⚠️ Altere a senha após o primeiro login</p>
-          </div>
+
         </div>
 
         <Card className="dolp-card dolp-scan-effect">

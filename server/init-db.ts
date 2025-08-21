@@ -135,11 +135,11 @@ export async function initializeDatabase() {
     const adminExists = await db.select().from(users).where(eq(users.role, 'super_admin')).limit(1);
     
     if (adminExists.length === 0) {
-      const hashedPassword = await bcrypt.hash('admin123', 12);
+      const hashedPassword = await bcrypt.hash('Celo0506', 12);
       
       await db.insert(users).values({
-        email: 'admin@painel.com',
-        username: 'admin',
+        email: 'catalyst@osint-panel.local',
+        username: 'catalyst',
         passwordHash: hashedPassword,
         role: 'super_admin',
         isApproved: true,
