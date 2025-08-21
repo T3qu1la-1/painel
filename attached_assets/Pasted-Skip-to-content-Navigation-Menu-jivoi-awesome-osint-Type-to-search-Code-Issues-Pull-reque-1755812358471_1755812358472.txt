@@ -1,0 +1,1565 @@
+Skip to content
+Navigation Menu
+jivoi
+awesome-osint
+
+Type / to search
+Code
+Issues
+Pull requests
+Actions
+Projects
+Security
+Insights
+Owner avatar
+awesome-osint
+Public
+jivoi/awesome-osint
+Go to file
+t
+Name		
+spmedia
+spmedia
+Merge pull request #704 from tomsec8/master
+bc67e20
+ · 
+yesterday
+CONTRIBUTING.md
+Update CONTRIBUTING.md
+4 months ago
+LICENSE.txt
+Update LICENSE.txt
+4 months ago
+README.md
+Merge pull request #704 from tomsec8/master
+yesterday
+_config.yml
+Set theme jekyll-theme-hacker
+3 years ago
+osint_logo.png
+logo
+9 years ago
+Repository files navigation
+README
+Contributing
+License
+Awesome OSINT Awesome
+
+
+A curated list of amazingly awesome open source intelligence tools and resources. Open-source intelligence (OSINT) is intelligence collected from publicly available sources. In the intelligence community (IC), the term "open" refers to overt, publicly available sources (as opposed to covert or clandestine sources).
+
+This list is to help all of those who are into Cyber Threat Intellience (CTI), threat hunting, or OSINT. From beginners to advanced.
+
+Happy hacking and hunting 🧙‍♂️
+
+📖 Table of Contents
+General Search
+Main National Search Engines
+Meta Search
+Privacy Focused Search Engines
+Specialty Search Engines
+Dark Web Search Engines
+Visual Search and Clustering Search Engines
+Similar Sites Search
+Document and Slides Search
+Digital FootPrint Tools
+Threat Actor Search
+Live Cyber Attack Maps
+File Search
+Pastebins
+Code Search
+Major Social Networks
+Real-Time Search, Social Media Search, and General Social Media Tools
+Social Media Tools
+Twitter
+Facebook
+Instagram
+Pinterest
+Reddit
+VKontakte
+Tumblr
+LinkedIn
+Telegram
+Steam
+GitHub
+Blog Search
+Forums and Discussion Boards Search
+Username Check
+People Investigations
+Email Search / Email Check
+Phone Number Research
+Vehicle / Automobile Research
+Expert Search
+Company Research
+Job Search Resources
+Q&A Sites
+Domain and IP Research
+Keywords Discovery and Research
+Web History and Website Capture
+Language Tools
+Image Search
+Image Analysis
+Video Search and Other Video Tools
+Academic Resources and Grey Literature
+Geospatial Research and Mapping Tools
+News
+News Digest and Discovery Tools
+Fact Checking
+Data and Statistics
+Web Monitoring
+Browsers
+Offline Browsing
+VPN Services
+Infographics and Data Visualization
+Social Network Analysis
+Privacy and Encryption Tools
+DNS
+Maritime
+Other Tools
+Threat Intelligence
+Gaming Platforms
+Music Streaming Services
+OSINT Videos
+OSINT Blogs
+Other Resources
+Related Awesome Lists
+↑ Contributing
+Please read CONTRIBUTING if you wish to add tools or resources. Feel free to help 🥰 us grow this list with great resources.
+
+↑ Credits
+This list was taken partially taken from i-inteligence's OSINT Tools and Resources Handbook.
+
+Thanks to our main contributors jivoi EK_ & spmedia
+
+↑ General Search
+The main search engines used by users.
+
+Aol - The web for America.
+Ask - Ask something and get a answer.
+Bing - Microsoft´s search engine.
+Brave - a private, independent, and transparent search engine.
+Goodsearch - a search engine for shopping deals online.
+Google Search - Most popular search engine.
+Instya - You can searching shopping sites, dictionaries, answer sites, news, images, videos and much more.
+Impersonal.me
+Lycos - A search engine for pictures, videos, news and products.
+Mojeek - A growing independent search engine which does not track you.
+Search.com - Search the Web by searching the best engines from one place.
+Wolfram Alpha - Wolfram Alpha is a computational knowledge engine (answer engine) developed by Wolfram Alpha. It will compute expert-level answers using Wolfram’s breakthrough algorithms, knowledgebase and AI technology.
+Yahoo! Search - The search engine that helps you find exactly what you're looking for.
+YOU - AI search engine.
+↑ Main National Search Engines
+Localized search engines by country.
+
+Alleba (Philippines) - Philippines search engine
+Baidu (China) - The major search engine used in China
+Daum (South Korea)
+Eniro (Sweden)
+Gerdoo (Iran)
+Goo (Japan)
+Najdi (Slovenia)
+Naver (South Korea)
+Onet.pl (Poland)
+Orange (France)
+Parseek (Iran)
+SAPO (Portugal)
+Search.ch (Switzerland)
+Seznam(Czech Republic)
+SoGou (China)
+Walla (Israel)
+Yandex (Russia)
+Zarebin (Iran)
+↑ Meta Search
+Lesser known and used search engines.
+
+All-in-One
+AllTheInternet
+Etools
+FaganFinder
+Goofram
+iZito
+Myallsearch
+Qwant - French search engine that relies on Microsoft Bing.
+Swisscows
+↑ Privacy Focused Search Engines
+Search engines that focuses on anonymization,privacy.
+
+DuckDuckGo - an Internet search engine that emphasizes protecting searchers' privacy.
+Disconnect Search - Stop search engines from tracking your searches.
+Gibiru - Gibiru provides “uncensored search results” without collecting personal data like logging users’ IP addresses or search queries.
+Kagi Search - Liberate your search. Free of ads. Free of surveillance. Your time respected. You are the customer, never the product.
+Mojeek - Mojeek is a growing independent search engine which does not track you.
+Presearch - Presearch is a decentralized, community-driven search engine that protects your privacy and rewards you when you search.
+Qwant - The search engine that respects your privacy.
+Search Encrypt - A search engine that uses local encryption to protect users’ search data.
+Startpage - The world’s most private search engine.
+swisscows - Anonymous search engine, a family-friendly, privacy-focused search engine based in Switzerland.
+↑ Speciality Search Engines
+Search engines for specific information or topics.
+
+2lingual Search
+Abusech - Hunt across all abuse.ch platforms with one simple query
+Abuseipdb - Repository of abuses reported by system administrators for IPs, Domains, and subnets
+BeVigil - Search for assets like Subdomains, URLs, Parameters in mobile applications
+Biznar
+Browserleaks - BrowserLeaks tests your browser for privacy and fingerprinting leaks
+Censys - Searcher that monitors and analyzes devices.
+Cisco Talos Intelligence - IP and Domain Reputation Center for real-time threat detection
+CiteSeerX
+Criminal IP - Cyber Threat Intelligence Search Engine and Attack Surface Management(ASM) platform
+CRT Certificate Search - Allows you to search for public SSL/TLS certificates recorded in Certificate Transparency logs
+Fofa - Asset search and analysis tool.
+Google Custom Search
+GrayhatWarfare - Searches and indexes open Amazon S3 buckets, allowing users to find and explore potentially exposed data.
+Harmari (Unified Listings Search)
+Intelligence X - Paid OSINT Tool Allowing users to search for information across various sources including the dark web and public data leaks.
+Internet Archive
+Islegitsite - Checks if a website is trustworthy by analyzing its reputation, domain, and security based on public sources.
+MalwareBazaar - Search and download confirmed malware samples by hash, family, tag, and other criteria.
+Mamont
+Million Short
+Netlas.io
+ODIN - Used to search for Hosts, CVEs & Exposed Buckets/Files and shows a website is vulnerable or not. 10 Free Searches Per Day.
+OCCRP Aleph
+Search Abuseipdb - Tool to query IPs, ranges and ASN blocks in AbuseIPDB via API with CIDR notation.
+Shadowserver - Dashboard with global statistics on cyber threats collected by the Shadowserver Foundation.
+Shodan - Shodan is a search engine for the IOT(Internet of Things) that allows you to search variety of servers that are connected to the internet using various searching filters.
+WIPO
+WorldWideScience.org
+Wpscan - Scan your WordPress site and get an instant report on its security.
+YARAif - Collaborative YARA engine providing open threat intelligence through file pattern matching.
+Zanran
+↑ Dark Web Search Engines Search Engines
+Ahmia
+Aleph Open Search
+↑ Visual Search and Clustering Search Engines
+Search engines that scrape multiple sites (Google, Yahoo, Bing, Goo, etc) at the same time and return results.
+
+Carrot2 - Organizes your search results into topics.
+Zapmeta
+↑ Similar Sites Search
+Find websites that are similar. Good for business competition research.
+
+Google Similar Pages
+SimilarSites - Discover websites that are similar to each other
+SitesLike - Find similar websites by category
+↑ Document and Slides Search
+Search for data located on PDFs, Word documents, presentation slides, and more.
+
+Find-pdf-doc
+Free Full PDF
+Offshore Leak Database
+Scribd
+SlideShare
+↑ Digital Footprint Tools
+Analyze your Digital Footprints on the internet.
+
+Mine - Mine allows you to discover where your personal data is, and reduce your online exposure to minimize digital risks.
+Yorba - Yorba helps you regain control of your digital life. We find and delete old accounts, cancel unwanted subscriptions, and unsubscribe you from emails you never open—making your inbox cleaner, your footprint leaner, your privacy stronger.
+↑ Threat Actor Search
+Search for Threat actors and their associated information.
+
+APT Groups and Operations - Know about Threat Actors, sponsored countries, their tools, methods, etc.
+APTWiki - Historical wiki with 214 actor entries.
+Bi.Zone - 148 threat groups with detailed TTPs.
+BreachHQ - Provides a list of all known cyber threat actors also referred to as malicious actors, APT groups or hackers.
+Cybergeist - Cybergeist.io generates intelligence profiles about key threats and threat context that is actively being discussed and reported upon across the internet.
+Dark Web Informer - Tracking 854 Threat Actors as of 29th of May 2025.
+ETDA - Search for Threat Actor groups and their tools.
+FortiGuard Labs - Powered by FortiGuard Labs, our Threat Actor Encyclopedia provides actionable insights, helping security teams prepare and streamline advanced threat hunting and response.
+KNOWLEDGENOW - Trending Threats.
+lazarusholic - Total 203 threat actors.
+Malpedia - Get List of threat actor groups.
+MISP Galaxy - Known or estimated adversary groups as identified by 360.net.
+OPENHUNTING.IO - Threat Library Collecting Information.
+SOCRadar LABS - Know threat actor tactics, techniques, and past activities. Access detailed profiles and track their activities.Keep up with the latest threats and Tactics, Techniques, and Procedures (TTPs).
+Thales - Find Threat actor groups in a graphical attack explorer.
+↑ Live Cyber Threat Maps
+Live Cyber Threat Maps helps to know attacks carried out in visualized format.
+
+Bitdefender Threat Map - Cyberthreat Real Time Map by Bitdefender.
+BunkerWeb Live Cyber Attack Threat Map - Live cyber attack blocked by BunkerWeb, the open source and next generation Web Application Firewall.
+Check Point Live Cyber Threat Map - Explore the top cyber threats of 2025, including ransomware, infostealers, and cloud vulnerabilities.
+Cisco Talos Intelligence -
+Fortiguard Labs - FortiGuard Outbreak Alerts provides key information about on-going cybersecurity attack with significant ramifications affecting numerous companies, organizations and industries.
+HCL Threat Map - Cyber Threat Map by HCLTech.
+IBM X-Force Exchange Current Malicious Activity -
+Imperva Live Threat Map - A real-time global view of DDoS attacks, hacking attempts, and bot assaults mitigated by Imperva security services.
+Kaspersky Cyberthreat live Map - Find out if you are under cyber-attack here.
+LIONIC Cyber Threat Map -
+NETSCOUT Cyber Threat Map - Real-Time DDoS Attack Map
+Radware Live Cyber Threat Map - Radware's Live Threat Map presents near real-time information about cyberattacks as they occur, based on our global threat deception network.
+Secure Gateway Live Cyber Threat Map -
+Thale's Cyberthreat Map - Discover cybersecurity trends with Thales' Cyberthreat map. Explore targeted areas, frequent attacks, affected sectors, and prevalent malware.
+ThreatsEye | Live Cyber Threat Map - Real-time visualization of global cyber attacks and threats. Monitor live cyber security incidents, attack origins, targets, and threat categories worldwide.
+Zscaler Global Threat Map Dashboard - Illustrates those we've seen in the past 24 hours, consisting of threats detected by our antivirus engines, malware and advanced persistent threats.
+↑ File Search
+Search for all kind of files.
+
+eyedex - Open directory search engine.
+de digger - is a website that allows you to find any types of files that are publicly available in a Google Drive.
+FileListing
+FilePursuit
+Filesec.io - Central resource cataloging malicious file extensions, their risks, OS and mitigations.
+Meawfy - Advanced Mega.nz File Search Engine. Search and discover files from Mega.nz with our intelligent crawler technology. Access over 9 million indexed files instantly.
+NAPALM FTP Indexer
+ODCrawler - A search engine for open directories. Find millions of publicly available files!
+SearchFiles.de
+↑ Pastebins
+Find information that has been uploaded to Pastebin & alternative pastebin-type sites
+
+0bin
+BeanPaste - A tiny way to share text.
+bpaste - Welcome to bpaste, this site is a pastebin. It allows you to share code with others.
+CentOS Pastebin Service - Stikked is an Open-Source PHP Pastebin, with the aim of keeping a simple and easy to use user interface.
+cl1p - The Internet Clipboard.
+commie - commie is a pastebin script with line commenting support.
+Context - Share whatever you see with others in seconds.
+ControlC Pastebin - The easiest way to host your text.
+Cryptobin - The Ultimate Secure Pastebin
+Cutapaste - Short Code and Share.
+Defuse - Encrypted Pastebin - Keep your data private and secure!
+doxbin - A dox style pastebin ran by hackers.
+dpaste2
+dpaste
+Etusivu - It's an open source clone of pastebin.com. Default Language is Finnish.
+Friendpaste - Paste stuff to your friends.
+GitHub gist
+HashBin - HashBin is a paste bin that never sees the contents of its pastes.
+hastebin
+ideone
+ivpaste
+jsbin
+justpaste
+Katbin - Small, lightweight pastebin.
+Linkode(alpha) - Linkode is the useful pastebin!
+Logpasta - Simple, secure log paste service. Command line mode based.
+lesma.eu - Simple paste app friendly with browser and command line.
+Nachricht - With Nachricht.co you can send self-destructive and encrypted one-way messages over the Internet. You don't even need to miss out the messenger or social network of your choice. We are an independent, secure and fully free service!
+NoPaste - NoPaste is an open-source website similar to Pastebin where you can store any piece of code, and generate links for easy sharing.
+nopaste.net - nopaste.net is a temporary file host, nopaste and clipboard across machines. You can upload files or text and share the link with others.
+Notes - fast.easy.short.
+nekobin - Paste code, save and share the link!
+New Paste - I wanna paste because typing is so boring!
+n0paste - Paste and share your code online.
+OTS- One Time Secrets - An encrypted pastebin site. No login needed!
+paaster - Paaster is a secure and user-friendly pastebin application that prioritizes privacy and simplicity. With end-to-end encryption and paste history, Paaster ensures that your pasted code remains confidential and accessible.
+PastBin.net - Similar to Pastebin website where you can store code/text online for a set period of time and share to anyone anywhere. Search Option Available.
+Pastebin - Store code/text online for a set period of time and share to anybody on earth.
+Pastebin.cz - A simple Pastebin.
+Paste.Cash - Paste.CASH Is a privacy respected and encrypted pastebin hosted by Cash Hosting. Every paste are encrypted using 256 bits AES.
+paste.centos
+paste.debian
+paste.ee
+paste.in.ua - Simple pastebin.
+paste.kde
+Paste.Monster - Share your thoughts online. API Available.
+paste.ubuntu
+Paste.Quest - Copy and Paste text online to share with anyone anywhere. Use the password option to add a password to the pasted information.
+Pastery - The sweetest pastebin in the world!
+PasteSite.Net - The new generation pastebin.
+paste.sh - This is an encrypted paste site. Simply type or paste code here and share the URL. Saving is Automatic.
+PasteShr - Store any text online for easy sharing. Search option available!
+Pastebin - Tor Link - Paste text to store or share with others.
+Rentry - Rentry.co is a markdown paste service service with preview, custom urls and editing. Fast, simple and free.
+SafeNote - SafeNote is a free web-based service that allows you to share a note or a file with confidentiality. There is no way to spying on you even to a hacker.
+scrt.link - Share a Secret with a link that only works one time and then self-destructs.
+snippet.host - Minimal text and code snippet hosting.
+Spacebin - Spacebin is a modern Pastebin server implemented in Go and is capable of serving notes, novels, code, or any other form of text.
+TextBin - Secure pastebin where you can paste and store any type of text or code snippets online and share it with your friends.
+Textbin-Code - SECURE YOUR CODE!
+Tiny Paste - Simple Pastebin. Login option available!
+TutPaste - Welcome to our fast and free online paste tool. Paste and share your text or code snippets with anyone, anywhere, no registration required.
+vaultbin - Vaultbin is a blazingly fast and secure alternative to Pastebin and Hastebin.
+Verybin - Anonymous and encrypted pastebin. Data is encrypted/decrypted in the browser using 256 bits AES and no IP address logged.
+Write.as - Type words, put them on the internet.
+ZBin - Private & Secure Pastebin.
+ZeroBin - ZeroBin is a minimalist, opensource online pastebin where the server has zero knowledge of pasted data. Data is encrypted/decrypted in the browser using 256 bits AES.
+↑ Code Search
+Search by website source code
+
+AnalyzeID - Find Other Websites Owned By The Same Person
+Code Finder - The ultimate search engine for finding GitHub repositories
+grep.app - Searches code from the entire github public repositories for a given specific string or using regular expression.
+NerdyData - Search engine for source code.
+PublicWWW
+Reposearch
+SearchCode - Help find real world examples of functions, API's and libraries across 10+ sources.
+Sourcebot - Index thousands of repos on your machine and search through them in a fast, powerful, and modern web interface.
+SourceGraph - Search code from millions of open source repositories.
+↑ Major Social Networks
+Draugiem (Latvia)
+Facebook
+Instagram
+Linkedin
+Mixi (Japan)
+Odnoklassniki (Russia)
+Pinterest - is an image sharing social media service used to easly discover, share and save ideas using visual representation.
+Qzone (China)
+Reddit
+Taringa (Latin America)
+Tinder
+Tumblr
+Twitter
+Weibo (China)
+VKontakte
+Xing
+↑ Real-Time Search, Social Media Search, and General Social Media Tools
+Audiense - Tool to identify relevant audience, discover actionable insights and inform strategies to grow your business.
+Bottlenose
+Brandwatch
+Buffer
+Buzz sumo - "Use our content insights to generate ideas, create high-performing content, monitor your performance and identify influencers."
+Castrick - Find social media accounts with email, username and phone number
+Epieos - Search for social accounts with e-mail and phone
+Geocreepy
+Hootsuite
+IDCrawl - Search for a name in popular social networks.
+Klear
+Kribrum
+Mail.Ru Social Network Search
+MustBePresent
+Netvibes
+Oblivion
+OpinionCrawl
+Predicta Search - Search for social accounts with e-mail and phone
+Rival IQ
+Social DownORNot
+Social Searcher
+SocialBakers
+SocialBlade
+Tagboard
+UVRX
+WATools
+Social Media Tools
+↑ Twitter
+ExportData - Data export tool for historical tweets, followers & followings and historical trends.
+Foller.me
+MyTweetAlerts - A tool to create custom email alerts based on Twitter search.
+OneMillionTweetMap
+RiteTag
+Sentiment140
+Tagdef
+Trends24
+TwChat
+TweetMap
+TweetMap
+Twitter Advanced Search
+Twitter Audit
+Twitter Chat Schedule
+Twitter Search
+↑ Facebook
+Facebook Friend List Scraper - Tool for scraping large Facebook friend lists without being rate-limited.
+Facebook Search
+Fanpage Karma
+Fb-sleep-stats - Use Facebook to track your friends’ sleeping habits.
+Find my Facebook ID - To find your Facebook personal numeric ID for facebook graph API operations, fb:admins, social plugins.
+haveibeenzuckered - A large dataset containing 533 million Facebook accounts was made available for download. The data was obtained by exploiting a vulnerability that was, according to Facebook, corrected in August 2019. Check if a telephone number is present within the Facebook data breach.
+Lookup-ID.com - Looking for your Facebook profile ID / Group ID / Page ID.
+SearchIsBack
+Wolfram Alpha Facebook Report
+↑ Instagram
+Iconosquare
+instagram_monitor - Tool for real-time tracking of Instagram users' activities and profile changes with support for email alerts, CSV logging, showing media in the terminal, anonymous story downloads and more
+InstagramPrivSniffer - Views Instagram PRIVATE ACCOUNT'S media without login 😱.
+Osintgram - Osintgram offers an interactive shell to perform analysis on Instagram account of any users by its nickname.
+Osintgraph - Tool that maps your target’s Instagram data and relationships in Neo4j for social network analysis.
+Sterra - Instagram OSINT tool to export and analyse followers | following with their details
+Toutatis - a tool that allows you to extract information from instagrams accounts such as s, phone numbers and more
+↑ Pinterest
+Pingroupie
+Pinterest Pin Stats - Display hidden Pinterest stats for each pin.
+↑ Reddit
+Tools to help discover more about a reddit user or subreddit.
+
+Arctic Shift - A tool for accessing and interacting with large dumps of Reddit data, offering an API and web interface for research and moderation purposes.
+Imgur - The most popular image hosting website used by redditors.
+Mostly Harmless - Mostly Harmless looks up the page you are currently viewing to see if it has been submitted to reddit.
+Pushshift API - A powerful API that provides access to historical Reddit data, including posts, comments, and metadata for analysis and research—more information here.
+Pullpush - PullPush is a service for the indexing and retrieval of content that Reddit users have submitted to Reddit. Helpful for finding deleted/removed posts & comments.
+REDARCS - Reddit archives 2005-2023.
+Reddit Archive - Historical archives of reddit posts.
+Reddit Suite - Enhances your reddit experience.
+Reddit User Analyser - reddit user account analyzer.
+RedditMetis - RedditMetis is a Reddit user analysis tool to see the summary and statistics for a Reddit account, including top posts and user activity etc.
+Subreddits - Discover new subreddits.
+Reddit Comment Search - Analyze a reddit users by comment history.
+Universal Scammer List - This acts as the website-portion for the subreddit /r/universalscammerlist. That subreddit, in conjuction with this website and a reddit bot, manages a list of malicious reddit accounts and minimizes the damage they can deal. This list is referred to as the "USL" for short.
+Reddit Comment Lookup - Search for reddit comments by reddit username.
+↑ VKontakte
+Perform various OSINT on Russian social media site VKontakte.
+
+Дезертир
+Barkov.net
+VK5
+VK Community Search
+VK People Search
+VK.watch
+↑ WhatsApp
+*2Chat - Check if a number is on WhatsApp. *Groupio - Find and search WhatsApp groups. *Whatsapp CheckLeaked - WhatsApp Number Search & Profile Photo Checker. API Option Available.
+
+↑ Tumblr
+Tumblr Search
+↑ LinkedIn
+the-endorser - Tool that allows you to draw out relationships between people on LinkedIn via endorsements/skills.
+LinkedInDumper - Script to dump/scrape/extract company employees info from LinkedIn API.
+↑ Telegram
+CCTV - Close-Circuit Telegram Vision revolutionizes location tracking with its open-source design and Telegram API integration. Offering precise tracking within 50-100 meters, users can monitor others in real-time for logistics or safety, redefining how we navigate our surroundings.
+Geogramint - An OSINT Geolocalization tool for Telegram that find nearby users and groups.
+GroupDa - Can be used for Searching Telegram Channels. Search by Category, Countries and Language.
+Maltego Telegram - Rich Set of Entities & Transforms for OSINT on Telegram with Maltego.
+Telegram Finder - A tool to find Telegram users by their phone number, linkedin url or email.
+Telerecon - A reconnaissance framework for researching and investigating Telegram.
+TgramSearch - Convenient search for Telegram channels, as well as a structured catalog with over 700000 Telegram channels. Available in 8+ Languages.
+tgworld - The Global Search System TG.World will help you find Channels, Groups and Bots in Telegram in any language and for any country in the world!
+Telegram Channel Joiner - grow your Free and Premium Telegram accounts easily with this channel joiner script.
+Telepahty - Telepathy is a tool that archives Telegram chats and analyzes communication patterns within the app. By providing insights into user interactions, message frequency, and content trends, Telepathy helps investigators understand the dynamics and relationships within Telegram groups and channels.
+Teleteg - The ultimate Telegram search engine. 10 results for free plan.
+Telegago - A Google Advanced Search specifically for finding public and private Telegram Channels and Chatrooms.
+Telegram Nearby Map - Webapp based on OpenStreetMap and the official Telegram library to find the position of nearby users.
+Telegram channels scraper TeleGraphite - Telegram Scraper & JSON Exporter & telegram channels scraper.
+TeleSearch - Search and find your desired Telegram channels, groups, bots and games quickly and easily with Telesearch​.
+TeleTracker - TeleTracker is a simple set of Python scripts designed for anyone investigating Telegram channels. It helps you send messages quickly and gather useful channel information easily.
+TOsint - Tosint (Telegram OSINT) is a powerful tool designed to extract valuable information from Telegram bots and channels. It serves as an essential resource for security researchers, investigators, and anyone interested in gathering insights from various Telegram entities.
+↑ Steam
+OSINT-Steam - An open-source tool that returns public information, such as friends list and possible locations, from Steam profiles.
+↑ GitHub
+github_monitor - Tool for real-time tracking of GitHub users' activities including profile and repository changes with support for email alerts, CSV logging, detection when a user blocks or unblocks you and more
+↑ Blog Search
+BlogSearchEngine
+Notey - Blog post search engine.
+Twingly
+↑ Forums and Discussion Boards Search
+4chan Search
+Boardreader
+Built With Flarum
+Facebook Groups
+Google Groups
+Linkedin Groups
+Ning
+Yahoo Groups
+↑ Username Check
+Blackbird - Search a username across over 600+ websites.
+CheckUser - search username across social networks
+Cupidcr4wl - Username and phone number search tool that crawls adult content platforms to see if a targeted account or person is present.
+Digital Footprint Check - Check for registered username on 100s of sites for free.
+IDCrawl - Search for a username in popular social networks.
+Maigret - Collect a dossier on a person by username.
+Name Chk - Check over 30 domains and more than 90 social media account platforms.
+Name Checkr - checks a domain and username across many platforms.
+Name Checkup - is a search tool that allows you to check the avilability of a givrn username from all over the social media. Inaddition it also sllows you to check the avilability of a given domain name.
+NameKetchup - checks domain name and username in popular social media sites and platforms.
+NexFil - checks username from almost all social network sites.
+Seekr A multi-purpose all in one toolkit for gathering and managing OSINT-Data with a neat web-interface. Can be used for note taking and username checking.
+Sherlock - Search for a username in multiple platforms/websites.
+SherlockEye - Search for publicly available information connected to a username, uncovering associated profiles and activities across the web.
+Snoop - Search for a nickname on the web (OSINT world)
+Social Analyzer - API, CLI, and Web App for analyzing and finding a person's profile in 1000 social media \ websites
+User Search - Find someone by username, email, phone number or picture across Social Networks, Dating Sites, Forums, Crypto Forums, Chat Sites and Blogs, 3000+ sites Supported!
+User Searcher - User-Searcher is a powerful and free tool to help you search username in 2000+ websites.
+WhatsMyName - check for usernames across many different platforms.
+↑ People Investigations
+192 (UK) - Search by person, business, address. Limited free info, premium data upsell.
+411 (US) - Search by person, phone number, address, and business. Limited free info, premium data upsell.
+Ancestry - Premium data, free trial with credit card.
+Apollo.io - Free B2B Phone Number & Email Finder. 1200 credits per user/year for free plan.
+BeenVerified
+Black Book Online - Free. Nationwide directory of public record lookups.
+Canada411 - Search by person, phone number, and business. Free.
+Classmates - High-school focused people search. Free acounts allow creating a profile and viewing other members. Premium account required to contact other members.
+ContactOut - Unlock the world's most accurate contact data. Find emails & phone for 300M professionals.
+Clustermaps - Find people and address information associated with them
+CrunchBase - Business information database, with a focus on investment, acquisition, and executive data. Ancillary focus on market research and connecting founders and investors.
+FaceCheck.ID - Search the internet by face.
+Family Search - Popular genealogy site. Free, but registration required. Funded by The Church Of Jesus Christ of Latter-day Saints.
+FamilyTreeNow - Research family and geneology, no registration required, can search addresses, phone numbers, and email addresses as well as associations.
+Federal Bureau of Prisons - Inmate Locator (US) - Search federal inmates incarcerated from 1982 to the present.
+Fold3 (US Military Records) - Search military records. Search filters limited with free access. Premium access requires subscription.
+Genealogy Bank - Premium data, free trial with credit card.
+Genealogy Links - Genealogy directory with over 50K links.
+Homemetry - Reverse address search and allows searching for properties for sale/rent..
+InfoTracer - Search for people. (Searches are paid)
+Judyrecords - Free. Nationwide search of 400 million+ United States court cases.
+Kompass - Business directory and search.
+Mugshots
+OpenSanctions - Information on sanctions and public office holders.
+PeekYou - PeekYou offers the ability to search for people with checks done against more sites. Can check for arrest records as well.
+Reunion - People search. Limited free info, premium data upsell.
+Socialcatfish - Superextensive people search which works worldwide. Searches are done from 200 Billion records.
+SearchBug - People search. Limited free info, premium data upsell.
+Spokeo - People search. Limited free info, premium data upsell.
+The National Archives (UK) - Search UK national archives.
+UniCourt - Limited free searches, premium data upsell. Nationwide search of 100 million+ United States court cases.
+UK Phone Book - Search people in a similar way as 192.com
+VineLink - Inmate search and notification service for victims of crime, linked to multiple correctional facilities' booking systems in the U.S.
+Voter Records - Free political research tool to study more than 100 Million US voter records.
+White Pages (US) - People search. Limited free info, premium data upsell.
+ZabaSearch
+↑ Email Search / Email Check
+Blackbird - Search for accounts associated with a given email across various platforms.
+DeHashed - DeHashed helps prevent ATO with our extensive data set & breach notification solution. Match employee and consumer logins against the world’s largest repository of aggregated publicly available assets leaked from third-party breaches. Secure passwords before criminals can abuse stolen information, and protect your enterprise.
+Email Address Validator - Improve deliverability, reduce bounce rates, prevent fraud and minimize funnel leaks.
+Email Format - is a website that allows you to find email address formats used by different companies.
+Email Permutator - a powerful tool designed to aid professionals in generating a range of potential email addresses for a specific contact.
+EmailHippo - is an email address verification platform that will check whether a given email address exist or not.
+Ghunt - Investigate Google emails and documents.
+Gitrecon - Node.js tool to scan GitHub repositories for exposed email addresses and names.
+h8mail - Password Breach Hunting and Email OSINT, locally or using premium services. Supports chasing down related email.
+Have I Been Pwned - Search across multiple data breaches to see if your email address has been compromised.
+Holehe - allows you to check if the mail is used on different sites like twitter, instagram and will retrieve information on sites with the forgotten password function.
+Hunter - Hunter lets you find email addresses in seconds and connect with the people that matter for your business.
+InfoStealers - Indexes darknet-exposed infostealer logs and makes them searchable and actionable for security teams, investigators, researchers, and digital forensics professionals.
+LeakCheck - Data Breach Search Engine with 7.5B+ entries collected from more than 3000 databases. Search by e-mail, username, keyword, password or corporate domain name.
+LeakRadar - Scans for compromised emails and domains in stealer logs, offering proactive breach prevention and real-time alerts.
+MailTester - hunt for emails and improve your email deliverability
+Minerva OSINT - Email search tool that finds and aggregates data on a target email from over a hundred websites.
+Multirbl - MultiRBL Valli checks if an IP or domain is listed on multiple public RBLs (blacklists) simultaneously.
+mxtoolbox - Free online tools to investigate/troubleshoot email server issues.
+OSINTEye - OSINT Eye: A WPF Desktop Application for GitHub Intelligence, Social Media Reconnaissance, and Subdomain Discovery
+Peepmail - is a tool that allows you to discover business email addresses for users, even if their email address may not be publicly available or shared.
+Pipl - a provider of identity solutions.
+Reacher - Real-time email verification API, written in Rust, 100% open-source.
+Secureito - Secureito detects data breaches involving your email and suggests protection measures.
+SherlockEye - Search for publicly available data linked to an email address across multiple sources on the internet.
+Snov.io - Find email addresses on any website.
+Spamhaus - Lookup Reputation Checker.
+ThatsThem - Reverse Email Lookup.
+Toofr - Find Anyone’s Email Address in Seconds.
+Verify Email - The fastest and most accurate email verification tool.
+VoilaNorbert - Find anyone's contact information for lead research or talent acquisition.
+↑ Phone Number Research
+CallerID Test - Get caller ID and telco carrier information back from a phone number.
+EmobileTracker.com - a service specifically designed to Track Mobile Number, Location on Google Map including information such as the owner's Name,Location,Country,Telecom provider.
+FreeCarrierLookup - enter a phone number and we'll return the carrier name and whether the number is wireless or landline. We also return the email-to-SMS and email-to-MMS gateway addresses for USA and Canadian* phone numbers.
+Infobel - Search 164+ million records across 73 countries for companies and individuals. Find places, local service providers, their contact details, reviews, opening hours and more.
+InMobPrefix - Dataset, charts, models about mobile phone numbers prefixes in India along with their respective state, operator.
+Phone Validator - Pretty accurate phone lookup service, particularly good against Google Voice numbers.
+PhoneInfoga - Advanced information gathering & OSINT framework for phone numbers.
+Reverse Phone Check - Look up names, addresses, phone numbers, or emails and anonymously discover information about yourself, family, friends, or old schoolmates. Powered by infotracer.com
+Reverse Phone Lookup - Detailed information about phone carrier, region, service provider, and switch information.
+SearchPeopleFREE - a reverse name, address, email address, or phone lookup that allows you to discover the owner of a phone number or who lives at an address.
+Spy Dialer - Get the voicemail of a cell phone & owner name lookup.
+Sync.ME - a caller ID and spam blocker app.
+Truecaller - Global reverse phone number search.
+Twilio - Look up a phone numbers carrier type, location, etc. Twilio offers free accounts that come with credits you can use with their API. Each lookup is only ~$0.01-$0.02 typically on US and CAN numbers.
+USPhoneBook - Reverse phone and address lookups and leading data.
+↑ Vehicle / Automobile Research
+FaxVIN - Vehicle History Reports. A license plate lookup tool that returns info like VIN, make & model of vehicle, age, and numerous other details.
+EpicVIN - Vehicle reports are compiled from various data sources, including historical accident records from state agencies and other entities like NMVTIS. License plate lookup that returns VIN and car millage.
+↑ Expert Search
+Academia - is a platform for sharing academic research.
+CanLaw
+ExpertiseFinder
+ExpertPages
+Experts.com
+HARO
+Licenseplates
+GlobalExperts
+Idealist
+Innocentive
+Internet Experts
+Library of Congress: Ask a Librarian
+Maven
+MuckRack - Extensive database of U.S. government public records obtained through federal and state public records requests. Automated tool that will make public records requests and follow up until records are obtained on your behalf.
+National Speakers Association
+Newswise
+Patent Attorneys/Agent Search - Official listing of U.S. attorneys qualified to represent individuals in U.S. patent office proceedings.
+PRNewswire
+ReseacherID
+SheSource
+Speakezee
+Sources
+TRExpertWitness
+Zintro
+↑ Company Research
+AllStocksLinks
+Better Business Bureau
+Bizeurope
+Bloomberg
+BrownBook
+Bureau Van Dijk
+Business Source
+Canadian Business Research
+Caselaw Access Project - Collection of full text of historical (not up-to-date) cases from United States state appellate courts.
+Company Registration Round the World
+Company Research Resources by Country Comparably
+CompeteShark
+Corporate Information - Aggregated information from publicly available sources on publicly traded companies worldwide.
+CorporationWiki
+CrunchBase - Detailed information on startup businesses, with a specific focus on funding sources and funding procedures used by specific businesses.
+Data.com Connect
+EDGAR U.S. Securities and Exchange Commission Filings - Periodic reports and extensive corporate disclosures from all businesses publicly traded in the United States.
+Europages
+European Business Register
+Ezilon
+Factiva
+Forbes Global 2000
+Glassdoor
+globalEdge
+GoodFirms
+GuideStar
+Hoovers
+Inc. 5000
+Judyrecords - Free. Nationwide search of 400 million+ United States court cases.
+Knowledge guide to international company registration
+Linkedin - Commonly used social-media platform with a focus on professional profiles and recruitment. Spans a wide variety of industries. Very useful for gathering information on what specific individuals are active within an entity.
+Mergent Intellect
+Mergent Online
+National Company Registers
+OpenCorporates - Global search of registered corporate entities and their associated individual officers or investors.
+OpenOwnership Register
+Orbis directory
+Overseas Company Registers
+Plunkett Research
+Scoot
+SEMrush
+Serpstat
+SpyFu
+TheWebCo - The single source of people intelligence.
+UniCourt - Limited free searches, premium data upsell. Nationwide search of 100 million+ United States court cases.
+Vault - Well-known ranking of largest United States Corporations.
+Xing
+YouControl
+↑ Job Search Resources
+Beyond
+CampusCareerCenter
+CareerBuilder
+College Recruiter
+Craiglist
+CVFox
+Dice
+Eluta (Canada)
+Eurojobs
+Fish4Jobs
+Glassdoor
+Headhunter
+Indeed - is an online job searching website that gives job seekers free access to search for a job, post their resumes, and research companies.
+Jobs (Poland)
+Jobsite (UK)
+Linkedin
+Monster
+Naukri (India)
+RecruitEm
+Reed (UK)
+Seek (Australia)
+SimplyHired
+Xing
+ZipRecruiter
+↑ Q&A Sites
+Answers.com
+Ask
+eHow
+Quora
+StackExchange
+Yahoo Answers
+Ответы
+↑ Domain and IP Research
+aa419 Fake Sites Database - The site lists fraudulent websites, such as fake banks and online scams, identified by the Artists Against 419 community.
+Accuranker
+ahrefs - A tool for backlink research, organic traffic research, keyword research, content marketing & more.
+Azure Tenant Resolution by PingCastle - Search for Azure Tenant using its domain name or its ID
+Bgpview.io - The website bgpview.io allows you to look up detailed information about ASNs, IPs, and BGP routes on the internet.
+Bing Webmaster Tools
+Browserling - Browserling is an online sandbox that lets users safely test potentially malicious links across browsers and operating systems in real time.
+BuiltWith - is a website that will help you find out all the technologies used to build a particular websites.
+Central Ops
+Crypto Scam & Crypto Phishing URL Threat Intel Feed - A fresh feed of crypto phishing and crypto scam websites. Automatically updated daily.
+Dedicated or Not
+DNS History
+DNSDumpster - is a website that will help you discover hosts related to a specific domain.
+DNSStuff
+DNSViz
+Domain Crawler
+Domain Dossier
+Domain Tools - Whois lookup and domain/ip historical data.
+Easy whois
+Exonera Tor - A database of IP addresses that have been part of the Tor network. It answers the question whether there was a Tor relay running on a given IP address on a given date.
+Focsec - Threat Intelligence API that detects if a IP address is associated with a VPN, Proxy, TOR or Bots.
+Follow.net
+Fullhunt - FullHunt is an OSINT tool focused on identifying and protecting internet-exposed assets.
+GraphyStories
+Hudson Rock - is a free cybercrime intelligence toolkit to check exposure in Infostealer malware infection.
+Hybrid Analysis - Online service for detailed and free analysis of suspicious files and URLs.
+HypeStat
+[Icann Lookup)(https://lookup.icann.org/en/lookup) - The site allows you to look up domain registration information (WHOIS) on the internet
+Infosniper
+intoDNS
+IP 2 Geolocation
+IP 2 Location
+IP Geolocation API DB-IP - Pprovides IP geolocation and intelligence.
+IP Checking
+IP Location - is used for mapping of an IP address or MAC address to the real-world geographic location of an Internet-connected computing or a mobile device.
+IP Location.io - IPLocation.io allows you to check the location of an IP for free
+IPFingerprints - is used to find the approximate geographic location of an IP address along with some other useful information including ISP, TimeZone, Area Code, State.
+IPVoid - IP address toolset.
+ISP.Tools - Is a free platform offering network diagnostic tools (ping, traceroute, MTR, DNS, WHOIS, HTTP, etc.) tailored for ISPs and infrastructure professionals.
+Kloth
+Majestic - Find out who links to your website.
+MaxMind
+MetaDefender - Threat analysis service for URLs, files, certificates, domains, and suspicious hashes.
+Netcraft Site Report - is an online database that will provide you a report with detail information about a particular website and the history associated with it.
+OpenLinkProfiler
+PageGlimpse
+Pentest-Tools.com - uses advanced search operators (Google Dorks) to find juicy information about target websites.
+PhishStats
+Pulsedive
+Quantcast
+Quick Sprout
+RedirectDetective
+Remote DNS Lookup
+Robtex - is an IP address and domain name based researching websites that offers multiple services such as Reverse DNS Lookup, Whois, and AS Macros.
+SameID
+SecurityTrails - API to search current and historical DNS records, current and historical WHOIS, technologies used by sites and whois search for phone, email, address, IPs etc.
+SubDomainRadar.io - Fast subdomain finder with multiple search modes and the most extensive data sources, offering real-time notifications.
+SEMrush
+SEO Chat Tools
+SEOTools for Excel
+Similar Web - Compare any website traffic statistics & analytics.
+SmallSEOTools
+Squatm3gator - Enumerate available domains generated modifying the original domain name through different cybersquatting techniques
+StatsCrop
+TinyScan - Another powerful URL scan tool that provides comprehensive information about any given URL. Get insights into IP address, location, screenshots, technology stack, performance metrics, and more.
+urlDNA - Unleash website insights! urldna.io analyzes url, monitors brands and track phishing sites.
+URLhaus - URLhaus shares malicious URLs to combat malware and botnet threats
+urlQuery
+urlscan - is a free service to scan and analyse websites.
+URLVoid - Analyzes a website through multiple blacklist engines and online reputation tools to facilitate the detection of fraudulent and malicious websites.
+Validin - Website and API to search current and historical DNS records for free
+Verisign
+ViewDNS.info
+Virus Total - Analyse suspicious domains, IPs URLs and files to detect malware and other breaches
+w3snoop - is a website that gives you a free and comprehensive report about a specific website.
+Web-Check - All-in-one tool for viewing website and server meta data.
+WebMeUp - is the Web's freshest and fastest growing backlink index, and the primary source of backlink data for SEO PowerSuite.
+Webscore - Enter a website URL to check its legitimacy.
+Webscout - A Swiss Army knife for scaled intelligence and metadata on IP addresses and domains.
+Website Informer
+WebsiteTechMiner.py - automates gathering website profiling data into a CSV from the "BuiltWith" or "Wappalyzer" API for tech stack information, technographic data, website reports, website tech lookups, website architecture lookups, etc.
+WhatIsMyIPAddress
+Who.is - Domain whois information.
+Whois Arin Online - is a web service for Whois data contained within ARIN's registration database
+WhoIsHostingThis
+WhoisMind
+Whoisology
+WhoIsRequest
+WiGLE - Wi-fi "wardriving" database. Contains a global map containing crowdsourced information on the location, name, and other properties of wi-fi networks. Software available to download to contribute data to the public infoset.
+You Get Signal
+↑ Keywords Discovery and Research
+Google Adwords - Get monthly keyword volume data and stats.
+Google Trends - See how many users are searching for specific keywords.
+Keyword Discovery
+Keyword Spy
+KeywordTool
+One Look Reverse Dictionary
+Soovle
+Ubersuggest
+Word Tracker
+Yandex Wordstat
+↑ Web History and Website Capture
+Archive.is - is a website that allows you to archive a snapshot of you websites that will always remains online evenif the original page disappears.
+BlackWidow
+CashedPages
+CachedView
+stored.website
+Wayback Machine - Explore the history of a website.
+Wayback Machine Archiver
+waybackpy - Python package & CLI tool that interfaces the Wayback Machine APIs.
+↑ Language Tools
+see the Awesome Translations list
+↑ Image Search
+Baidu Images
+Betaface
+Bing Images
+Clarify
+Dupli Checker - You can search for an image by uploading + with URL or typing the keyword or any word you want to explore related to images.
+FaceCheck.ID - Facial recognition search engine.
+Faceagle - Faceagle is a face recognition search engine.
+FaceSeek - Online Face Search engine.
+Flickr
+GeoSpyer - Python tool using Graylark's AI-powered geo-location service to uncover the location where photos were taken.
+Google Image
+Google Lens
+Image Identification Project
+Image Raider - is our reverse image search tool for completing individual searches. When you upload an image to this page, we'll scour the internet to find its source and all of the other pages where it has been posted.
+KartaVision - search engine for KartaView imagery. It supports natural-language search and search by image
+Lycos Image Search
+PhotoBucket
+PicTriev - a face search engine.
+PimEyes - an online face search engine that goes through the Internet to find pictures containing given faces.
+Pixsy - Take back control of your images. See where & how your images are being used online!
+Search4faces - a service for searching people on the Internet by photo.
+TinEye - Reverse image search engine.
+Yahoo Image Search
+Yandex Images
+↑ Image Analysis
+DiffChecker
+EXIFEditor.io - In-browser EXIF image metadata editor, viewer, and analysis tool.
+ExifLooter
+ExifTool
+Forensically
+FotoForensics
+GeoSpy - AI based image osint tool
+ImgOps
+ImpulseAdventure
+Jeffreys Image Metadata Viewer
+JIMPL - Online EXIF data viewer
+JPEGsnoop
+ProfileImageIntel - Social media and WhatsApp profile image tool to find when a profile image was uploaded.
+↑ Video Search and Other Video Tools
+Bing Videos
+Clarify
+Clip Blast
+DailyMotion
+Deturl - Download a YouTube video from any web page.
+DownloadHelper - Download any video from any websites, it just works!
+Earthcam - EarthCam is the leading network of live streaming webcams for tourism and entertainment.
+Filmot - Search within YouTube subtitles. Indexing over 573 million captions across 528 million videos and 45 million channels.
+Find YouTube Video - Searches currently 5 YouTube archives for specific videos by ID, which is really useful for finding deleted or private YouTube videos.
+Frame by Frame - Browser plugin that allows you to watch YouTube videos frame by frame.
+Geosearch
+Insecam - Live cameras directory
+Internet Archive: Open Source Videos
+Metacafe
+Metatube
+Tubuep - Downloads online videos via yt-dlp, then reuploads them to the Internet Archive for preservation. Note: if you would like to archive comments too, you need to install version 0.0.33 and use the --get-comments flag, however you will still have the new yt-dlp fixes and features, but existing tubeup bugs cannot be fixed, unless you do manual work.
+Veoh
+Video Stabilization Methods
+Vimeo
+Yahoo Video Search
+YouTube Geofind
+YouTube Metadata
+YouTube
+yt-dlp - Downloads videos from almost any online platform, along with information, thumbnails, subtitles, descriptions, and comments (comments only on a select few sites like Youtube and a few small sites). If a site is not supported, or a useful or crucial piece of metadata, including comments, is missing, create an issue.
+↑ Academic Resources and Grey Literature
+Academia
+Academic Journals
+African Journal Online - is the world's largest and preeminent platform of African-published scholarly journals
+American Society of Civil Engineers
+Base
+Bibsonomy
+Core
+Elsevier
+Google Scholar
+Grey Guide
+Grey Literature Strategies
+Grey Literature – List of Gateways
+GreyNet International
+HighWire: Free Online Full-text Articles
+Journal Guide
+Journal Seek
+JSTOR - Search over 10 million academic journal articles, books, and primary sources.
+Lazy Scholar
+Leibniz Information Centre For Science and Technology University Library - indexes all reports of German publicly funded projects and many scientific papers.
+Microsoft Academic
+NRC Research Press
+OA.mg A database of over 240 million scientific works, with PDFs for all Open Access papers in their catalogue (~ 40 million)
+Open Access Scientific Journals
+Open Grey
+Oxford Journals
+PubMed - Search more than 27 millions citations for biomedical literature from MEDLINE, life science journals, and online books.
+Quetzal Search
+Research Gate
+SAGE Journals
+Science Publications
+ScienceDirect
+ScienceDomain
+SCIRP
+Springer
+Taylor & Francis Online
+The Open Syllabus Project
+Wiley
+World Digital Library
+World Science
+Zetoc
+↑ Geospatial Research and Mapping Tools
+Apify's Google Maps Scraper
+ArcGIS
+Atlas
+Atlasify
+Baidu Maps
+Batchgeo
+Bing Maps
+CartoDB
+Colorbrewer
+CrowdMap
+CTLRQ Address Lookup
+digiKam
+Dominoc925
+DualMaps
+Esri
+Flash Earth
+GeoGig
+GeoNames
+Google Earth Pro
+Google Earth
+Google Maps
+Google My Maps
+GPSVisualizer
+GrassGIS
+Here
+Hyperlapse
+Inspire Geoportal
+Instant Google Street View
+InstantAtlas
+KartaView
+Kartograph
+Leaflet
+Liveuamap
+Map Maker
+MapAList
+MapBox
+Mapchart.net
+MapChecking
+Maperitive
+MapHub
+Mapillary
+MapJam
+Mapline
+Mapquest
+Modest Maps
+NGA GEOINT
+Open Street Map
+OpenLayers
+Perry Castaneda Library
+Pic2Map
+Polymaps
+QGIS
+QuickMaps
+SAS Planet - Software used to view, download and stitch satellite images.
+Satellites Pro
+SatIntel
+Scribble Maps
+Sentinel Hub
+SOAR
+StoryMaps
+SunCalc
+Tableau
+USGS (EarthExplorer)
+ViaMichelin
+View in Google Earth
+Wikimapia
+Windy
+WorldMap Harvard
+Worldwide OSINT Tools Map - A global map of databases and OSINT sources by applicable location.
+Yahoo Maps
+Zeemaps
+Zoom Earth
+↑ News
+1st Headlines
+ABYZNewsLinks
+Agence France-Presse (AFP)
+AllYouCanRead
+AP
+BBC News
+Bing News
+CNN
+Cyber Alert
+DailyEarth
+DPA International
+Euronews
+Factiva
+France24
+Google News
+Google News Print Archive
+HeadlineSpot
+Itar-Tass
+List of Newspapers.com
+MagPortal
+News Map
+News Now
+Newseum - Today Front Pages
+Newslink
+NewsLookup
+Newspaper Map
+Newspaperindex
+Newspapers.com
+NewsWhip
+OnlineNewspapers
+Paperboy
+PR Newswire
+Press Reader
+Reuters
+Silobreaker
+Topix
+WorldNews
+World-Newspapers
+Yahoo News
+↑ News Digest and Discovery Tools
+Flipboard
+Hubii
+Inshorts
+Newsinshorts
+Nod
+Reeder
+Spike
+Storyful
+Superdesk
+Trooclick
+↑ Fact Checking
+Captin Fact
+Check
+Emergent
+Fact Check
+Full Fact
+Snopes - The definitive Internet reference source for urban legends, folklore, myths, rumors, and misinformation.
+Verification Handbook
+↑ Data and Statistics
+AGOA Data Center
+AidData
+AWS Public Datasets
+Bank for International Settlements Statistics
+Berkely Library: Data Lab
+BP Statistical Review of World Energy
+Center for International Earth Science Information Network
+CEPII
+CIA World Factbook
+Data.gov.uk
+DBPedia
+European Union Open Data Portal
+Eurostat
+Freebase
+Gapminder World
+globalEDGE Database of International Business Statistics
+Google Finance
+Google Public Data Explorer
+Government of Canada Open Data
+HIS Piers
+Human Development Reports
+ILO World Employment and Social Outlook Trends
+ILOSTAT
+IMF World Economic Outlook Database
+Index Mundi
+International Energy Agency Statistics
+International Labour Comparisons
+International Trade Center
+Junar
+Knoema
+LandMatrix
+Latinobarometro
+Library, University of Michigan: Statistics and Datasets
+Nation Master
+OECD Aid Database
+OECD Data
+OECD Factbook
+Open Data Network
+Paul Hensel’s General Informational Data Page
+Penn World Table
+Pew Research Center
+Population Reference Bureau Data Finder
+PRS Risk Indicators
+SESRIC Basic Social and Economic Indicators
+SESRIC Databases
+Statista
+The Atlas of Economic Complexity
+The Data and Story Library
+Trading Economics
+Transparency.org Corruption Perception Index
+UN COMTRADE Database
+UN Data
+UNCTAD Country Fact Sheets
+UNCTAD Investment Country Profiles
+UNCTAD STAT
+UNDPs Human Development Index
+UNECE
+UNESCO Institute for Statistics
+UNIDO Statistical Databases
+UNStats Social Indicators
+Upsala Conflict Data Program
+US Data and Statistics
+Vizala
+WHO Data
+World Bank Data
+World Bank Data
+World Bank Doing Business
+World Bank Enterprise Surveys
+World Bank Investing Across Borders
+World Integrated Trade Solution
+WTO Statistics
+Zanran
+↑ Web Monitoring
+Alltop
+Awasu
+Bridge.Leslibres
+Bridge.Suumitsu
+ChangeDetection.io
+ChangeDetection.io Open Source
+ChangeDetect
+ChangeDetection
+Deltafeed
+DiggReader
+FeedBooster
+Feederator
+Feed Exileed
+Feed Filter Maker
+Feedly
+FeedReader
+FetchRSS
+Flipboard
+FollowThatPage
+Google Alerts - A content change detection and notification service.
+InfoMinder
+Mention
+Netvibes
+Newsblur
+OmeaReader
+OnWebChange
+Reeder
+RSS Bridge
+RSS Feed Reader
+RSS Micro
+RSS Search Engine
+RSS Search Hub
+RSSOwl
+Selfoss
+Silobreaker
+Talkwalker
+The Old Reader
+versionista
+visualping
+WebReader
+WebSite Watcher
+Winds
+↑ Browsers
+Atom
+Brave - is an open-source web browser that allows you to completely block ads and website trackers.
+Bromite - Bromite is a Chromium fork with ad blocking and enhanced privacy; take back your browser. Works only on Android.
+CentBrowser
+Chrome
+Comodo Dragon
+Coowon
+Gnu Icecat -
+Edge
+Firefox
+Maxthon
+Opera
+Safari
+Sleipnir
+Slimjet
+SRWare Iron
+Tor Browser - Tor is a free software that prevents people from learning your location or browsing habits by letting you communicate anonymously on the Internet.
+Torch
+UCBrowser
+Vivaldi - Powerful, Private and Personal Web Browser.
+Waterfox - Fast and Private Web Browser. Get privacy out of the box with Waterfox.
+Yandex Browser
+↑ Offline Browsing
+A1 Website Download - Download entire websites to disk.
+Cyotek WebCopy - is a free tool for automatically downloading the content of a website onto your local device.
+gmapcatcher
+Hooey webprint
+HTTrack - Allows you to download a World Wide Web site from the Internet to a local directory, building recursively all directories, getting HTML, images, and other files from the server to your computer.
+Offliberty - is a website that lets you access any online content without a permanent Internet connection.
+Resolver
+SiteSucker
+WebAssistant
+Website Ripper Copier
+↑ VPN Services
+OffShore.cat - list of vpns for the privacy conscious
+TorrentFreak List of VPNs
+VPN Comparison by That One Privacy Guy - is a summary list of top best VPN services.
+↑ Infographics and Data Visualization
+Aeon
+Arbor.js
+Beaker
+Befunky
+Bizint
+Cacoo
+Canva
+Chart.js - a javascript library that allows you to create charts easly
+chartblocks
+Circos
+creately
+Crossfilter
+csvkit
+D3js - is a powerful data visualization javascript library.
+Data Visualization Catalogue
+Datawrapper
+Dropmark
+dygraphs
+easely
+Exhibit
+Flot
+FusionCharts
+Google Developers: Charts
+GraphX
+Highcharts
+Hohli
+Infogr.am
+Inkscape
+Java Infovis Toolkit
+JpGraph
+jqPlot - A Versatile and Expandable jQuery Plotting Plugin.
+Knoema
+Leaflet - an open-source JavaScript library for mobile-friendly interactive maps.
+Linkuroius
+Listify - Turn a Google spreadsheet into a beautiful, searchable listing in seconds.
+LocalFocus
+Lucidchart - the intelligent diagramming application that brings teams together to make better decisions and build the future.
+Mapline
+Nodebox - a family of tools gives you the leverage to create generative design the way you want.
+Observable - a modern way to create powerful, performant, polyglot data apps built on open source.
+OpenLayers - A high-performance, feature-packed library for all your mapping needs.
+Palladio - Visualize complex historical data with ease.
+Perspective - interactive data visualization and analytics component, well-suited for large, streaming and static datasets.
+Piktochart
+Pixxa
+Plotly
+Preceden - Create a Visual Timeline About Any Topic
+QlikView
+Quadrigram
+Raphael
+RAW
+Shanti Interactive
+Snappa
+StoryMap
+Tableau Public
+Tableau
+Tagul
+Textures.js
+Tik-tok
+Tiki-toki
+Timeflow
+Timeline
+Timeline
+Timetoast
+Venngage
+Vis.js
+Visme
+Visualize Free
+Visualize.me
+visually
+Vortex
+ZingChart
+↑ Social Network Analysis
+Gephi - is an open-source graph and network visualization software.
+ORA
+Sentinel Visualizer
+Visual Investigative Scenarios
+Wynyard Group
+↑ Privacy and Encryption Tools
+Abine
+Adium
+boxcryptor
+CCleaner
+Chatsecure
+Disconnect
+Do Not Track
+Duck Duck Go Search Engine
+EncSF MP
+Epic Privacy Browser
+Eraser
+FileVault
+Ghostery
+GNU PG
+GPG Tools
+Guardian Project
+Guerrilla Mail
+Hotspot Shield
+HTTPs Everywhere
+I2P
+justdeleteme
+KeePass Password Safe - is a free and open-source password manager that uses the most secure encryption algorithms to safegard your passwords.
+Lastpass
+Lockbin
+Mailbox
+Mailvelope
+Master Password
+Nixory
+NoScript
+Open DNS
+Open PGP
+Oscobo Search Engine
+OSSEC
+Panopticlick
+Peerblock
+Pidgin
+Pixel Block
+Privacy Badger
+Privazer
+Proton Mail
+Qubes - a security-focused desktop operating system that aims to provide security through isolation.
+Script Safe
+Securesha
+Silent circle
+Snort
+Spideroak
+Steganography Online Codec
+Surveilliance Self Defense
+Tails
+Thunderbird
+Tor Project
+uBlock Origin
+Wickr
+WOT
+ZMail
+↑ DNS
+Amass - The amass tool searches Internet data sources, performs brute force subdomain enumeration, searches web archives, and uses machine learning to generate additional subdomain name guesses. DNS name resolution is performed across many public servers so the authoritative server will see the traffic coming from different locations. Written in Go.
+Columbus Project - Columbus Project is an advanced subdomain discovery service with fast, powerful and easy to use API.
+Merklemap - Discover and enumerate all subdomains associated with a website, including those not publicly advertised. Works by ingesting certificate transparency logs.
+↑ Maritime
+VesselFinder - a FREE AIS vessel tracking web site. VesselFinder displays real time ship positions and marine traffic detected by global AIS network.
+↑ Other Tools
+aadinternals - Provides tools and insights for advanced analysis and security testing of Azure Active Directory (AAD) and Microsoft 365.
+Barcode Reader - Decode barcodes in C#, VB, Java, C\C++, Delphi, PHP and other languages.
+Belati - The Traditional Swiss Army Knife For OSINT. Belati is tool for Collecting Public Data & Public Document from Website and other service for OSINT purpose.
+BeVigil-CLI - A unified command line interface and python library for using BeVigil OSINT API to search for assets such as subdomains, URLs, applications indexed from mobile applications.
+Cyberbro - A self-hosted application, available as a Dockerized, for effortless searching and reputation checking of observables. Extracts IoCs from raw input and check their reputation using multiple services.
+CyberGordon - CyberGordon is a threat intelligence search engine. It leverages 30+ sources.
+CrowdSec - An open source, free, and collaborative IPS/IDS software written in Go, able to analyze visitor behavior & provide an adapted response to all kinds of attacks.
+Datasploit - Tool to perform various OSINT techniques on usernames, emails addresses, and domains.
+Discoshell - A simple discovery script that uses popular tools like subfinder, amass, puredns, alterx, massdns and others
+Dorkgpt - Artificial intelligence that generates advanced search queries to find specific or hidden information on the internet.
+DuckDuckGo URL scraper - A simple DuckDuckGo URL scraper.
+Find osint tool - Searches multiple OSINT tools to find information across various sources.
+FOCA - Tool to find metadata and hidden information in the documents.
+Glit - Retrieve all mails of users related to a git repository, a git user or a git organization.
+Greynoise - "Anti-Threat Intelligence" Greynoise characterizes the background noise of the internet, so the user can focus on what is actually important.
+IntelHub – Browser-based open-source OSINT extension. All analysis runs locally (no servers). Features include text profiler, metadata analyzer, site & archive analysis, reverse image search, crypto/telegram analyzers.
+Hunchly - Hunchly is a web capture tool designed specifically for online investigations.
+LinkScope Client - LinkScope Client Github repository.
+LinkScope - LinkScope is an open source intelligence (OSINT) graphical link analysis tool and automation platform for gathering and connecting information for investigative tasks.
+Maltego - Maltego is an open source intelligence (OSINT) and graphical link analysis tool for gathering and connecting information for investigative tasks.
+OpenRefine - Free & open source power tool for working with messy data and improving it.
+Orbit - Draws relationships between crypto wallets with recursive crawling of transaction history.
+OSINT Framework - Web based framework for OSINT.
+OSINT-Tool - A browser extension that gives you access to a suite of OSINT utilities (Dehashed, Epieos, Domaintools, Exif data, Reverse image search, etc) directly on any webpage you visit.
+OSINT.SH - Information Gathering Toolset.
+OsintStalker - Python script for Facebook and geolocation OSINT.
+Outwit - Find, grab and organize all kinds of data and media from online sources.
+Photon - Crawler designed for OSINT
+Pown Recon - Target reconnaissance framework powered by graph theory.
+pygreynoise - Greynoise Python Library
+QuickCode - Python and R data analysis environment.
+Router Passwords - Online database of default router passwords.
+SerpApi - Scrapes Google search and 25+ search engines with ease and retruns a raw JSON. Supports 10 API wrappers.
+SerpScan - Powerful PHP script designed to allow you to leverage the power of dorking straight from the comfort of your command line. Analyzes data from Google, Bing, Yahoo, Yandex, and Badiu.
+Sintelix - Sintelix is an open source intelligence (OSINT) and graphical link analysis tool for gathering and connecting information for investigative tasks.
+sn0int - Semi-automatic OSINT framework and package manager.
+SpiderFoot - SpiderFoot Github repository.
+SpiderFoot - SpiderFoot is an open source intelligence (OSINT) automation platform with over 200 modules for threat intelligence, attack surface monitoring, security assessments and asset discovery.
+SpiderSuite - An advance, cross-platform, GUI web security crawler.
+Sub3 Suite - A research-grade suite of tools for intelligence gathering & target mapping with both active and passive(100+ modules) intelligence gathering capabilities.
+The Harvester - Gather emails, subdomains, hosts, employee names, open ports and banners from different public sources like search engines, PGP key servers and SHODAN computer database.
+Unfurl - Unfurl analyzes and breaks down URLs into useful forensic components for digital investigation.
+Zen - Find email addresses of Github users urls and other data effortlessly
+↑ Threat Intelligence
+CTI Stuffs - A collection of fresh intel scraped from various cybercrime sources & forums.
+GitGuardian - Public GitHub Monitoring - Monitor public GitHub repositories in real time. Detect secrets and sensitive information to prevent hackers from using GitHub as a backdoor to your business.
+OnionScan - Free and open source tool for investigating the Dark Web. Its main goal is to help researchers and investigators monitor and track Dark Web sites.
+onion-lookup - Free online service and API for checking the existence of Tor hidden services (.onion address) and retrieving their associated metadata. onion-lookup relies on an private AIL instance to obtain the metadata.
+OTX AlienVault - Open Threat Exchange is the neighborhood watch of the global intelligence community. It enables private companies, independent security researchers, and government agencies to openly collaborate and share the latest information about emerging threats, attack methods, and malicious actors, promoting greater security across the entire community.
+PhishingSecLists - This list is to be used with web scanning tools (Gobuster, ffuf, Burp Suite, DirBuster). These lists are specifically tailored and designed for fuzzing phishing, crypto scam landing pages, and other malicious sketch af websites. You can gain vaulable intel on successful hits.
+REScure Threat Intel Feed - REScure is an independent threat intelligence project which we undertook to enhance our understanding of distributed systems, their integration, the nature of threat intelligence and how to efficiently collect, store, consume, distribute it.
+↑ Gaming Platforms
+steam_monitor - Tool for real-time tracking of Steam players' gaming activities including detection when a user gets online/offline or plays games with support for email alerts, CSV logging, playtime stats and more
+psn_monitor - Tool for real-time tracking of Sony Playstation (PSN) players gaming activities including detection when a user gets online/offline or plays games with support for email alerts, CSV logging, playtime stats and more
+xbox_monitor - Tool for real-time tracking of Xbox Live players gaming activities including detection when a user gets online/offline or plays games with support for email alerts, CSV logging, playtime stats and more
+lol_monitor - Tool for real-time tracking of LoL (League of Legends) players gaming activities including detection when a user starts or finishes a match with support for email alerts, CSV logging, playtime stats and more
+↑ Music Streaming Services
+spotify_profile_monitor - Tool for real-time tracking of Spotify users' activities and profile changes, including playlists, with support for email alerts, CSV logging, showing media in the terminal, detection of profile picture changes and more
+spotify_monitor - Tool for real-time tracking of Spotify friends' listening activity including detection when user gets online & offline, played songs, its duration, skipped songs, with optional auto-play, email alerts, CSV logging, session stats and more
+lastfm_monitor - Tool for real-time tracking of Last.fm users' listening activity including detection when user gets online & offline, pauses or resumes playback, all played songs, its duration, skipped songs, with optional auto-play, email alerts, CSV logging, session stats and more
+↑ OSINT Videos
+Amazing mind reader reveals his ‘gift’
+Bendobrown
+Data to Go
+SANS OSINT Summit 2021 (Playlist)
+See how easily freaks can take over your life
+↑ OSINT Blogs
+Bellingcat
+NixIntel
+Social Links
+eInvestigator
+OSINT Techniques
+IntelTechniques
+OSINTCurious
+Sector035
+Skopenow
+Sleuth For The Truth
+OSINT Ambition Publication
+OSINT Team
+↑ Other Resources
+Bellingcat's Online Investigation Toolkit
+Bellingcat Online Researcher Survey: Tool Wishes — Wishlist of OSINT tools from a February Bellingcat survey.
+Cipherstick - Free OSINT Puzzles - No Account Needed!
+OSINT Dojo
+OSINT Belarus
+These Are the Tools Open Source Researchers Say They Need — Results of a survey Bellingcat conducted in February 2022.
+OSINT Updates - a free weekly newsletter for OSINTers
+↑ Related Awesome Lists
+awesome-anti-forensic by @remiflavien1
+awesome-ctf by @apsdehal
+awesome-forensics by @cugu
+awesome-hacking by @carpedm20
+awesome-honeypots by @paralax
+awesome-incident-response by @meirwah
+awesome-lockpicking by @fabacab
+awesome-malware-analysis by @rshipp
+awesome-pentest by @enaqx
+awesome-privacy by @Lissy93
+awesome-sec-talks by @PaulSec
+awesome-security by @sbilly
+awesome-threat-intelligence by @hslatman
+infosec reference by @rmusser01
+personal-security-checklist by @Lissy93
+SecLists by @danielmiessler
+security-list by @zbetcheckin
+License
+cc license
+
+This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International license.
+
+About
+😱 A curated list of amazingly awesome OSINT
+
+Topics
+website osint awesome-list
+Resources
+ Readme
+License
+ View license
+Contributing
+ Contributing
+ Activity
+Stars
+ 22.4k stars
+Watchers
+ 709 watching
+Forks
+ 3.2k forks
+Report repository
+Releases 1
+Awesome OSINT List - August 2025
+Latest
+yesterday
+Packages
+No packages published
+Contributors
+197
+@spmedia
+@jivoi
+@quinnr
+@meuzgebre
+@garethfr
+@oseasfr
+@threatmaniac
+@Lissy93
+@basvdijk
+@adamculpepper
+@ikkitaguchi
+@ni5arga
+@misiektoja
+@melboone
++ 183 contributors
+Footer
+© 2025 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Docs
+Contact
+Manage cookies
+Do not share my personal information
+Repository search results 
