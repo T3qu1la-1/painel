@@ -40,7 +40,9 @@ export function setupAuth(app: Express) {
           user: {
             username,
             role: 'administrator',
-            authenticated: true
+            authenticated: true,
+            isApproved: true,
+            isActive: true
           }
         });
       } else {

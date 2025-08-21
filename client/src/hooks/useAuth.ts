@@ -47,7 +47,8 @@ export function useAuth() {
   }, [isLoading]);
 
   const isAuthenticated = !!user && !!storedToken;
-  const isApproved = user?.isApproved ?? false;
+  // Admin sempre aprovado, outros usuários precisam de aprovação
+  const isApproved = user?.role === 'administrator' || user?.isApproved === true;
 
   const logout = () => {
     localStorage.removeItem("access_token");
