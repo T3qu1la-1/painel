@@ -26,12 +26,10 @@ function validateRequest(schema: z.ZodSchema, data: any) {
 
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  console.log('🔧 Configurando rotas com segurança máxima...');
-  
-  // Aplicar middleware de segurança avançado
+  // Apply security middleware
   applySecurityMiddleware(app);
   
-  // Configurar sistema de autenticação ultra-seguro
+  // Setup authentication
   setupAuth(app);
   
   // Registrar rotas OSINT

@@ -147,30 +147,7 @@ export const securityLogger = (req: Request, res: Response, next: NextFunction) 
   const url = req.originalUrl;
   const timestamp = new Date().toISOString();
   
-  // Log de requisições suspeitas
-  const suspiciousPaths = ['/admin', '/api/admin', '/.env', '/config', '/wp-admin'];
-  const suspiciousParams = ['../../../', '<script', 'SELECT * FROM', 'UNION SELECT'];
-  
-  let suspicious = false;
-  
-  // Verifica caminhos suspeitos
-  if (suspiciousPaths.some(path => url.toLowerCase().includes(path.toLowerCase()))) {
-    suspicious = true;
-  }
-  
-  // Verifica parâmetros suspeitos
-  const queryString = JSON.stringify(req.query);
-  const bodyString = JSON.stringify(req.body);
-  if (suspiciousParams.some(param => 
-    queryString.toLowerCase().includes(param.toLowerCase()) ||
-    bodyString.toLowerCase().includes(param.toLowerCase())
-  )) {
-    suspicious = true;
-  }
-  
-  if (suspicious) {
-    console.log(`🚨 SUSPICIOUS REQUEST: ${timestamp} - ${ip} - ${method} ${url} - ${userAgent}`);
-  }
+  // Basic request logging
   
   next();
 };

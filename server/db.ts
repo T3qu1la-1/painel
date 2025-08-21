@@ -1,10 +1,14 @@
-import { drizzle } from 'drizzle-orm/neon-serverless';
-import { neon } from '@neondatabase/serverless';
+import Database from 'better-sqlite3';
+import { drizzle } from 'drizzle-orm/better-sqlite3';
 import * as schema from "@shared/schema";
+import path from 'path';
 
-if (!process.env.DATABASE_URL) {
-  throw new Error("DATABASE_URL environment variable is required");
-}
+// Create SQLite database file
+const dbPath = path.join(process.cwd(), 'painel-dolp.db');
+const sqlite = new Database(dbPath);
 
-const sql = neon(process.env.DATABASE_URL);
-export const db = drizzle(sql, { schema });
+// Enable foreign keys
+sqlite.pragma('foreign_keys = ON');
+
+export const db = drizzle(sqlite, { schema });
+export { sqlite };
