@@ -37,19 +37,21 @@ export default function Login() {
     mutationFn: async (data: LoginForm) => {
       const response = await apiRequest("/api/auth/login", {
         method: "POST",
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          username: data.login, // Usar o campo login como username
+          password: data.password
+        }),
       });
       return response;
     },
     onSuccess: (data) => {
-      // Store tokens
-      localStorage.setItem("access_token", data.accessToken);
-      localStorage.setItem("refresh_token", data.refreshToken);
+      // Store JWT token and user data
+      localStorage.setItem("access_token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
       
       toast({
         title: "Login realizado!",
-        description: "Bem-vindo ao Painel DOLP",
+        description: "Bem-vindo ao Painel OSINT Ultra-Seguro",
       });
       
       setLocation("/");
@@ -74,11 +76,19 @@ export default function Login() {
         <div className="text-center space-y-3">
           <div className="flex items-center justify-center space-x-3 dolp-slide-in">
             <Shield className="h-10 w-10 text-blue-500 dolp-glow dolp-float" />
-            <h1 className="text-4xl font-bold text-white dolp-text-glow">Painel DOLP</h1>
+            <h1 className="text-4xl font-bold text-white dolp-text-glow">Painel OSINT</h1>
           </div>
           <div className="space-y-1">
-            <p className="text-gray-400 text-lg">Sistema de Inteligência e Segurança</p>
-            <p className="dolp-subtitle">Este painel é destinado aos membros da DOLP</p>
+            <p className="text-gray-400 text-lg">Sistema OSINT Ultra-Seguro</p>
+            <p className="dolp-subtitle">Painel protegido com criptografia AES-256</p>
+          </div>
+          
+          {/* Credenciais de teste - remover em produção */}
+          <div className="bg-blue-900/20 border border-blue-500/30 rounded-lg p-3 text-sm">
+            <p className="text-blue-300 font-medium mb-1">🔐 Credenciais do Administrador:</p>
+            <p className="text-white">Usuário: <code className="bg-gray-800/50 px-1 rounded">admin</code></p>
+            <p className="text-white">Senha: <code className="bg-gray-800/50 px-1 rounded">OsintPanel2024!@#$</code></p>
+            <p className="text-xs text-blue-200 mt-1">⚠️ Altere a senha após o primeiro login</p>
           </div>
         </div>
 

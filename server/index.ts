@@ -4,6 +4,8 @@ import { setupVite, serveStatic, log } from "./vite";
 import { initializeDatabase } from "./init-db";
 
 const app = express();
+// Configurar trust proxy para Replit
+app.set('trust proxy', 1);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 

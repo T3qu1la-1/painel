@@ -28,13 +28,7 @@ import type {
   InsertStats 
 } from "@shared/schema";
 import { eq, and, desc, count, sql } from "drizzle-orm";
-import { 
-  hashPassword, 
-  encryptSensitiveData, 
-  decryptSensitiveData,
-  generateSessionToken,
-  ADMIN_CREDENTIALS 
-} from "./auth";
+import { authManager } from "./security/auth-manager";
 
 export interface IStorage {
   // User authentication operations
@@ -496,21 +490,11 @@ class DatabaseStorage implements IStorage {
   }
 
   // Admin operations
-  async createDefaultAdmin(): Promise<User> {
-    // Check if admin already exists
-    const existingAdmin = await this.getUserByUsername(ADMIN_CREDENTIALS.username);
-    if (existingAdmin) return existingAdmin;
-    
-    const admin = await this.createUser({
-      email: ADMIN_CREDENTIALS.email,
-      username: ADMIN_CREDENTIALS.username,
-      passwordHash: ADMIN_CREDENTIALS.password,
-      role: 'super_admin',
-      isApproved: true,
-      isActive: true,
-    });
-    
-    return admin;
+  async createDefaultAdmin(): Promise<User | null> {
+    // O sistema de admin agora é gerenciado pelo AuthManager com arquivo criptografado
+    // Esta função é mantida para compatibilidade mas não é mais necessária
+    console.log('⚠️ createDefaultAdmin(): Sistema de admin migrado para AuthManager criptografado');
+    return null;
   }
 
   async getPendingUsers(): Promise<User[]> {
