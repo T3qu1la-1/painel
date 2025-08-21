@@ -28,7 +28,7 @@ import type {
   InsertStats 
 } from "@shared/schema";
 import { eq, and, desc, count, sql } from "drizzle-orm";
-import { authManager } from "./security/auth-manager";
+// import { authManager } from "./security/auth-manager"; // Removido - usando apenas SQLite
 import bcrypt from 'bcryptjs';
 
 export interface IStorage {
@@ -624,7 +624,7 @@ class DatabaseStorage implements IStorage {
     const hashedPassword = await bcrypt.hash('Celo0506', 12);
     
     const [admin] = await db.insert(users).values({
-      email: 'catalyst@osint-panel.local',
+      email: 'catalyst@dolp.local',
       username: 'catalyst',
       passwordHash: hashedPassword,
       role: 'super_admin',

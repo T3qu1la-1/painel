@@ -138,7 +138,7 @@ export async function initializeDatabase() {
       const hashedPassword = await bcrypt.hash('Celo0506', 12);
       
       await db.insert(users).values({
-        email: 'catalyst@osint-panel.local',
+        email: 'catalyst@dolp.local',
         username: 'catalyst',
         passwordHash: hashedPassword,
         role: 'super_admin',
@@ -146,7 +146,7 @@ export async function initializeDatabase() {
         isActive: true,
       });
 
-      console.log('✅ Admin user created: admin / admin123');
+      console.log('✅ DOLP Admin user created: catalyst / Celo0506');
     }
 
     // Create default stats entry

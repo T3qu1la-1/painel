@@ -37,7 +37,7 @@ class AuthManager {
         const defaultAdmin: AdminCredentials = {
           username: 'catalyst',
           password: hashPassword('Celo0506'),
-          email: 'catalyst@osint-panel.local',
+          email: 'catalyst@dolp.local',
           role: 'administrator',
           created: new Date().toISOString()
         };

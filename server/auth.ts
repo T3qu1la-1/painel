@@ -153,6 +153,6 @@ export function setupAuth(app: Express) {
     }
   });
   
-  console.log('✅ Authentication system configured');
-  console.log('🔐 Default credentials: catalyst / Celo0506');
+  console.log('✅ DOLP Authentication system configured');
+  console.log('🔐 DOLP Default credentials: catalyst / Celo0506');
 }

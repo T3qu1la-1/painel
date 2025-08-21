@@ -105,8 +105,8 @@ export function Navigation({ onLogout, username }: NavigationProps) {
     <nav className="bg-gray-900 border-r border-gray-700 w-64 min-h-screen p-4">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-xl font-bold text-white mb-2">Painel OSINT</h1>
-        <p className="text-gray-400 text-sm">Sistema da Equipe</p>
+        <h1 className="text-xl font-bold text-white mb-2">DOLP</h1>
+        <p className="text-gray-400 text-sm">Sistema DOLP</p>
       </div>
 
       {/* User Info */}

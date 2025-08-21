@@ -1,6 +1,6 @@
 # Overview
 
-This is an OSINT (Open Source Intelligence) panel application built with React and Express. The application provides various intelligence gathering tools including email lookup, domain analysis, IP geolocation, phone number lookup, and social media investigation. It features a modern dashboard interface with search capabilities, bookmark management, and comprehensive result visualization.
+DOLP é um sistema de inteligência da equipe brasileira, construído com React e Express. The application provides various intelligence gathering tools including email lookup, domain analysis, IP geolocation, phone number lookup, and social media investigation. It features a modern dashboard interface with search capabilities, bookmark management, and comprehensive result visualization.
 
 The application is designed as a full-stack TypeScript solution with a React frontend using shadcn/ui components and an Express backend with PostgreSQL database integration through Drizzle ORM.
 

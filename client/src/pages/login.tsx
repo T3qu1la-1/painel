@@ -76,11 +76,11 @@ export default function Login() {
         <div className="text-center space-y-3">
           <div className="flex items-center justify-center space-x-3 dolp-slide-in">
             <Shield className="h-10 w-10 text-blue-500 dolp-glow dolp-float" />
-            <h1 className="text-4xl font-bold text-white dolp-text-glow">Painel OSINT</h1>
+            <h1 className="text-4xl font-bold text-white dolp-text-glow">DOLP</h1>
           </div>
           <div className="space-y-1">
-            <p className="text-gray-400 text-lg">Painel OSINT da Equipe</p>
-            <p className="dolp-subtitle">Sistema de Inteligência</p>
+            <p className="text-gray-400 text-lg">DOLP - Painel da Equipe</p>
+            <p className="dolp-subtitle">Sistema DOLP de Inteligência</p>
           </div>
           
 

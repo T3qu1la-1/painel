@@ -208,10 +208,10 @@ export default function AdminPanel() {
       <div className="space-y-2">
         <h1 className="text-3xl font-bold text-white flex items-center gap-3">
           <Shield className="h-8 w-8 text-blue-500" />
-          Painel Administrativo
+          Painel Administrativo DOLP
         </h1>
         <p className="text-gray-400">
-          Gerencie usuários, menus e configurações do sistema.
+          Gerencie usuários, menus e configurações do sistema DOLP.
         </p>
       </div>
 
