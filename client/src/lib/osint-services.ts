@@ -18,7 +18,7 @@ export async function searchEmail(email: string): Promise<OSINTResult> {
     });
     return response;
   } catch (error) {
-    throw new Error(`Email search failed: ${error.message}`);
+    throw new Error(`Email search failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
   }
 }
 
@@ -31,7 +31,7 @@ export async function analyzeDomain(domain: string): Promise<OSINTResult> {
     });
     return response;
   } catch (error) {
-    throw new Error(`Domain analysis failed: ${error.message}`);
+    throw new Error(`Domain analysis failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
   }
 }
 
@@ -44,7 +44,7 @@ export async function getIPLocation(ip: string): Promise<OSINTResult> {
     });
     return response;
   } catch (error) {
-    throw new Error(`IP location failed: ${error.message}`);
+    throw new Error(`IP location failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
   }
 }
 
@@ -57,7 +57,7 @@ export async function lookupPhone(phone: string): Promise<OSINTResult> {
     });
     return response;
   } catch (error) {
-    throw new Error(`Phone lookup failed: ${error.message}`);
+    throw new Error(`Phone lookup failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
   }
 }
 
@@ -70,7 +70,7 @@ export async function searchSocialMedia(username: string): Promise<OSINTResult> 
     });
     return response;
   } catch (error) {
-    throw new Error(`Social media search failed: ${error.message}`);
+    throw new Error(`Social media search failed: ${error instanceof Error ? error.message : 'Unknown error'}`);
   }
 }
 
@@ -80,7 +80,7 @@ export async function getSearchHistory(): Promise<OSINTResult[]> {
     const response = await apiRequest("/api/searches");
     return response.searches || [];
   } catch (error) {
-    throw new Error(`Failed to fetch search history: ${error.message}`);
+    throw new Error(`Failed to fetch search history: ${error instanceof Error ? error.message : 'Unknown error'}`);
   }
 }
 
@@ -93,7 +93,7 @@ export async function bookmarkSearch(searchId: string, title: string, notes?: st
     });
     return response;
   } catch (error) {
-    throw new Error(`Failed to bookmark search: ${error.message}`);
+    throw new Error(`Failed to bookmark search: ${error instanceof Error ? error.message : 'Unknown error'}`);
   }
 }
 
@@ -103,7 +103,7 @@ export async function getBookmarks(): Promise<any[]> {
     const response = await apiRequest("/api/bookmarks");
     return response.bookmarks || [];
   } catch (error) {
-    throw new Error(`Failed to fetch bookmarks: ${error.message}`);
+    throw new Error(`Failed to fetch bookmarks: ${error instanceof Error ? error.message : 'Unknown error'}`);
   }
 }
 
@@ -115,7 +115,7 @@ export async function deleteSearch(searchId: string): Promise<any> {
     });
     return response;
   } catch (error) {
-    throw new Error(`Failed to delete search: ${error.message}`);
+    throw new Error(`Failed to delete search: ${error instanceof Error ? error.message : 'Unknown error'}`);
   }
 }
 
@@ -125,6 +125,6 @@ export async function getDashboardStats(): Promise<any> {
     const response = await apiRequest("/api/stats");
     return response;
   } catch (error) {
-    throw new Error(`Failed to fetch dashboard stats: ${error.message}`);
+    throw new Error(`Failed to fetch dashboard stats: ${error instanceof Error ? error.message : 'Unknown error'}`);
   }
 }

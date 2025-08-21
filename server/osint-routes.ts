@@ -1,6 +1,7 @@
 import type { Express } from "express";
 import { z } from "zod";
 import { storage } from "./storage";
+import { OSINTAPIs } from "./osint-apis";
 
 function validateRequest(schema: z.ZodSchema, data: any) {
   try {
@@ -38,35 +39,7 @@ export function registerOSINTRoutes(app: Express) {
         searchType: 'email' as const,
         query: email,
         status: 'completed' as const,
-        results: {
-          email,
-          breaches: [
-            { 
-              name: "LinkedIn", 
-              date: "2021-06-01", 
-              verified: true,
-              description: "700M user records exposed"
-            },
-            { 
-              name: "Facebook", 
-              date: "2019-04-01", 
-              verified: true,
-              description: "533M user phone numbers"
-            }
-          ],
-          socialMedia: [
-            { platform: "LinkedIn", url: `https://linkedin.com/in/${email.split('@')[0]}`, verified: false },
-            { platform: "Twitter", url: `https://twitter.com/${email.split('@')[0]}`, verified: false },
-            { platform: "GitHub", url: `https://github.com/${email.split('@')[0]}`, verified: false }
-          ],
-          domains: [email.split('@')[1]],
-          reputation: 'unknown',
-          sources: ['haveibeenpwned', 'hunter', 'emailrep'],
-          metadata: {
-            searchedAt: new Date().toISOString(),
-            ipAddress: req.ip || 'unknown',
-          }
-        }
+        results: await OSINTAPIs.searchEmail(email)
       };
 
       const search = await storage.createSearch(searchData);
@@ -87,34 +60,7 @@ export function registerOSINTRoutes(app: Express) {
         searchType: 'domain' as const,
         query: domain,
         status: 'completed' as const,
-        results: {
-          domain,
-          whois: {
-            registrar: "Example Registrar",
-            created: "2020-01-01",
-            expires: "2025-01-01",
-            nameServers: ["ns1.example.com", "ns2.example.com"]
-          },
-          dns: {
-            A: ["192.168.1.1"],
-            AAAA: ["2001:db8::1"],
-            MX: ["mail.example.com"],
-            NS: ["ns1.example.com", "ns2.example.com"]
-          },
-          subdomains: ["www", "mail", "ftp", "api"],
-          technologies: ["Apache", "PHP", "MySQL", "WordPress"],
-          ssl: {
-            valid: true,
-            issuer: "Let's Encrypt",
-            expires: "2024-12-31"
-          },
-          reputation: 'clean',
-          sources: ['whois', 'dns', 'virustotal'],
-          metadata: {
-            searchedAt: new Date().toISOString(),
-            ipAddress: req.ip || 'unknown',
-          }
-        }
+        results: await OSINTAPIs.analyzeDomainReal(domain)
       };
 
       const search = await storage.createSearch(searchData);
@@ -135,26 +81,7 @@ export function registerOSINTRoutes(app: Express) {
         searchType: 'ip' as const,
         query: ip,
         status: 'completed' as const,
-        results: {
-          ip,
-          location: {
-            country: "Brazil",
-            region: "São Paulo",
-            city: "São Paulo",
-            lat: -23.5505,
-            lon: -46.6333,
-            timezone: "America/Sao_Paulo"
-          },
-          isp: "Vivo Fibra",
-          asn: "AS26615",
-          reputation: 'clean',
-          ports: [80, 443, 22, 25],
-          sources: ['ipapi', 'abuseipdb', 'shodan'],
-          metadata: {
-            searchedAt: new Date().toISOString(),
-            ipAddress: req.ip || 'unknown',
-          }
-        }
+        results: await OSINTAPIs.getIPLocationReal(ip)
       };
 
       const search = await storage.createSearch(searchData);
@@ -175,25 +102,7 @@ export function registerOSINTRoutes(app: Express) {
         searchType: 'phone' as const,
         query: phone,
         status: 'completed' as const,
-        results: {
-          phone,
-          carrier: "Vivo",
-          location: {
-            country: "Brazil",
-            region: "São Paulo"
-          },
-          type: 'mobile',
-          valid: true,
-          socialMedia: [
-            { platform: "WhatsApp", verified: true },
-            { platform: "Telegram", verified: false }
-          ],
-          sources: ['truecaller', 'numverify'],
-          metadata: {
-            searchedAt: new Date().toISOString(),
-            ipAddress: req.ip || 'unknown',
-          }
-        }
+        results: await OSINTAPIs.lookupPhoneReal(phone)
       };
 
       const search = await storage.createSearch(searchData);
@@ -214,40 +123,7 @@ export function registerOSINTRoutes(app: Express) {
         searchType: 'social' as const,
         query: username,
         status: 'completed' as const,
-        results: {
-          username,
-          platforms: [
-            { name: "Instagram", url: `https://instagram.com/${username}`, exists: true },
-            { name: "Twitter", url: `https://twitter.com/${username}`, exists: true },
-            { name: "Facebook", url: `https://facebook.com/${username}`, exists: false },
-            { name: "LinkedIn", url: `https://linkedin.com/in/${username}`, exists: true },
-            { name: "GitHub", url: `https://github.com/${username}`, exists: true },
-            { name: "TikTok", url: `https://tiktok.com/@${username}`, exists: false },
-            { name: "YouTube", url: `https://youtube.com/c/${username}`, exists: false }
-          ],
-          profiles: [
-            {
-              platform: "Instagram",
-              followers: 1250,
-              following: 890,
-              posts: 156,
-              verified: false,
-              bio: "Photographer & Digital Artist"
-            },
-            {
-              platform: "GitHub",
-              repositories: 23,
-              followers: 45,
-              following: 67,
-              verified: false,
-              bio: "Full Stack Developer"
-            }
-          ],
-          metadata: {
-            searchedAt: new Date().toISOString(),
-            ipAddress: req.ip || 'unknown',
-          }
-        }
+        results: await OSINTAPIs.searchSocialMediaReal(username)
       };
 
       const search = await storage.createSearch(searchData);
@@ -317,7 +193,7 @@ export function registerOSINTRoutes(app: Express) {
   // Dashboard stats
   app.get('/api/stats', authenticateToken, async (req: any, res) => {
     try {
-      const stats = await storage.getDashboardStats();
+      const stats = await storage.getDashboardStats(req.user.id);
       res.json(stats);
     } catch (error) {
       console.error('Get stats error:', error);

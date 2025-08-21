@@ -62,6 +62,10 @@ export interface IStorage {
   // User-specific search operations
   getUserSearches(userId: string): Promise<Search[]>;
   getUserSearchById(id: string, userId: string): Promise<Search | undefined>;
+  deleteSearch(id: string, userId?: string): Promise<boolean>;
+  
+  // Dashboard stats
+  getDashboardStats(userId?: string): Promise<any>;
   
   // Bookmark operations (backwards compatible)
   getBookmark(id: string): Promise<Bookmark | undefined>;
@@ -437,6 +441,22 @@ class DatabaseStorage implements IStorage {
       .limit(1);
     
     return userStats || this.getSystemStats();
+  }
+  
+  async deleteSearch(id: string, userId?: string): Promise<boolean> {
+    const whereClause = userId 
+      ? and(eq(searches.id, id), eq(searches.userId, userId))
+      : eq(searches.id, id);
+      
+    const result = await db.delete(searches).where(whereClause);
+    return result.rowCount > 0;
+  }
+  
+  async getDashboardStats(userId?: string): Promise<any> {
+    if (userId) {
+      return this.getUserStats(userId);
+    }
+    return this.getSystemStats();
   }
 
   async updateUserStats(userId: string, updates: Partial<InsertStats>): Promise<Stats> {
