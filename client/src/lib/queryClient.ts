@@ -33,8 +33,8 @@ export async function apiRequest(url: string, options?: RequestInit): Promise<an
     // Clear tokens and redirect to login
     localStorage.removeItem("access_token");
     localStorage.removeItem("user");
-    if (window.location.pathname !== '/auth') {
-      window.location.href = "/auth";
+    if (window.location.pathname !== '/login') {
+      window.location.href = "/login";
     }
     throw new Error("401: Unauthorized - Please login again");
   }

@@ -1,4 +1,6 @@
 import crypto from 'crypto';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
 // Chaves de criptografia (em produção, devem estar em variáveis de ambiente)
 const ENCRYPTION_KEY = process.env.ENCRYPTION_KEY || crypto.randomBytes(32).toString('hex');
@@ -78,7 +80,6 @@ export function decrypt(encryptedData: string, password?: string): string {
  * Gera hash seguro usando bcrypt com salt alto
  */
 export function hashPassword(password: string): string {
-  const bcrypt = require('bcryptjs');
   return bcrypt.hashSync(password, 16); // Salt rounds = 16 para segurança máxima
 }
 
@@ -86,7 +87,6 @@ export function hashPassword(password: string): string {
  * Verifica senha contra hash
  */
 export function verifyPassword(password: string, hash: string): boolean {
-  const bcrypt = require('bcryptjs');
   return bcrypt.compareSync(password, hash);
 }
 
@@ -94,7 +94,6 @@ export function verifyPassword(password: string, hash: string): boolean {
  * Gera token JWT seguro
  */
 export function generateSecureToken(payload: any): string {
-  const jwt = require('jsonwebtoken');
   const secret = process.env.JWT_SECRET || crypto.randomBytes(64).toString('hex');
   
   return jwt.sign(payload, secret, {
@@ -109,7 +108,6 @@ export function generateSecureToken(payload: any): string {
  * Verifica token JWT
  */
 export function verifyToken(token: string): any {
-  const jwt = require('jsonwebtoken');
   const secret = process.env.JWT_SECRET || crypto.randomBytes(64).toString('hex');
   
   return jwt.verify(token, secret, {
