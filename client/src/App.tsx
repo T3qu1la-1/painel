@@ -7,24 +7,20 @@ import { useAuth } from "@/hooks/useAuth";
 import NotFound from "@/pages/not-found";
 import Dashboard from "@/pages/dashboard";
 import { MainLayout } from "@/components/layout/MainLayout";
-import EmailLookup from "@/pages/email-lookup";
-import DomainAnalysis from "@/pages/domain-analysis";
-import IPGeolocation from "@/pages/ip-geolocation";
-import SocialMedia from "@/pages/social-media";
-import PhoneLookup from "@/pages/phone-lookup";
 import SearchHistory from "@/pages/search-history";
 import Bookmarks from "@/pages/bookmarks";
 import Login from "@/pages/login";
 import Register from "@/pages/register";
-import Admin from "@/pages/admin";
+import SearchEnginesGeneral from "@/pages/search-engines-general";
+import SearchEnginesSpecialty from "@/pages/search-engines-specialty";
+import PeopleEmail from "@/pages/people-email";
+import PeoplePhone from "@/pages/people-phone";
+import PeopleUsername from "@/pages/people-username";
+import SocialTwitter from "@/pages/social-twitter";
+import TechnicalDomains from "@/pages/technical-domains";
+import TechnicalIP from "@/pages/technical-ip";
+import MediaImages from "@/pages/media-images";
 
-// New OSINT Pages
-import EmailBreachCheck from "@/pages/osint/EmailBreachCheck";
-import IPGeolocationPage from "@/pages/osint/IPGeolocation";
-import UsernameCheckPage from "@/pages/osint/UsernameCheck";
-import HashGenerator from "@/pages/tools/HashGenerator";
-import Base64Tool from "@/pages/tools/Base64Tool";
-import PasswordGenerator from "@/pages/tools/PasswordGenerator";
 import AdminPanel from "@/pages/AdminPanel";
 
 function AuthProtectedRoute({ component: Component }: { component: React.ComponentType }) {
@@ -77,44 +73,51 @@ function Router() {
       <Route path="/register" component={Register} />
       <Route path="/" component={() => <AuthProtectedRoute component={Dashboard} />} />
       
-      {/* Legacy Routes - Manter para compatibilidade */}
-      <Route path="/email-lookup" component={() => <AuthProtectedRoute component={EmailLookup} />} />
-      <Route path="/domain-analysis" component={() => <AuthProtectedRoute component={DomainAnalysis} />} />
-      <Route path="/ip-geolocation" component={() => <AuthProtectedRoute component={IPGeolocation} />} />
-      <Route path="/social-media" component={() => <AuthProtectedRoute component={SocialMedia} />} />
-      <Route path="/phone-lookup" component={() => <AuthProtectedRoute component={PhoneLookup} />} />
+      {/* Motores de Busca */}
+      <Route path="/search-engines/general" component={() => <AuthProtectedRoute component={SearchEnginesGeneral} />} />
+      <Route path="/search-engines/specialty" component={() => <AuthProtectedRoute component={SearchEnginesSpecialty} />} />
+      <Route path="/search-engines/private" component={() => <AuthProtectedRoute component={SearchEnginesGeneral} />} />
+      <Route path="/search-engines/national" component={() => <AuthProtectedRoute component={SearchEnginesGeneral} />} />
+      
+      {/* Investigação Pessoas */}
+      <Route path="/people/email" component={() => <AuthProtectedRoute component={PeopleEmail} />} />
+      <Route path="/people/phone" component={() => <AuthProtectedRoute component={PeoplePhone} />} />
+      <Route path="/people/username" component={() => <AuthProtectedRoute component={PeopleUsername} />} />
+      <Route path="/people/general" component={() => <AuthProtectedRoute component={Dashboard} />} />
+      
+      {/* Redes Sociais */}
+      <Route path="/social/twitter" component={() => <AuthProtectedRoute component={SocialTwitter} />} />
+      <Route path="/social/facebook" component={() => <AuthProtectedRoute component={Dashboard} />} />
+      <Route path="/social/instagram" component={() => <AuthProtectedRoute component={Dashboard} />} />
+      <Route path="/social/linkedin" component={() => <AuthProtectedRoute component={Dashboard} />} />
+      <Route path="/social/reddit" component={() => <AuthProtectedRoute component={Dashboard} />} />
+      <Route path="/social/telegram" component={() => <AuthProtectedRoute component={Dashboard} />} />
+      <Route path="/social/github" component={() => <AuthProtectedRoute component={Dashboard} />} />
+      
+      {/* Análise Técnica */}
+      <Route path="/technical/domains" component={() => <AuthProtectedRoute component={TechnicalDomains} />} />
+      <Route path="/technical/ip" component={() => <AuthProtectedRoute component={TechnicalIP} />} />
+      <Route path="/technical/threat" component={() => <AuthProtectedRoute component={Dashboard} />} />
+      <Route path="/technical/code" component={() => <AuthProtectedRoute component={Dashboard} />} />
+      <Route path="/technical/advanced" component={() => <AuthProtectedRoute component={Dashboard} />} />
+      
+      {/* Mídia & Conteúdo */}
+      <Route path="/media/images" component={() => <AuthProtectedRoute component={MediaImages} />} />
+      <Route path="/media/documents" component={() => <AuthProtectedRoute component={Dashboard} />} />
+      <Route path="/media/monitoring" component={() => <AuthProtectedRoute component={Dashboard} />} />
+      <Route path="/media/factcheck" component={() => <AuthProtectedRoute component={Dashboard} />} />
+      
+      {/* Ferramentas Especiais */}
+      <Route path="/special/darkweb" component={() => <AuthProtectedRoute component={Dashboard} />} />
+      <Route path="/special/maritime" component={() => <AuthProtectedRoute component={Dashboard} />} />
+      <Route path="/special/gaming" component={() => <AuthProtectedRoute component={Dashboard} />} />
+      
+      {/* Histórico & Favoritos */}
       <Route path="/search-history" component={() => <AuthProtectedRoute component={SearchHistory} />} />
       <Route path="/bookmarks" component={() => <AuthProtectedRoute component={Bookmarks} />} />
+      
+      {/* Admin */}
       <Route path="/admin" component={() => <AuthProtectedRoute component={AdminPanel} />} />
-      
-      {/* New OSINT Routes - organized by menu structure */}
-      
-      {/* OSINT Menu */}
-      <Route path="/osint/email" component={() => <AuthProtectedRoute component={EmailBreachCheck} />} />
-      <Route path="/osint/domain" component={() => <AuthProtectedRoute component={DomainAnalysis} />} />
-      <Route path="/osint/ip" component={() => <AuthProtectedRoute component={IPGeolocationPage} />} />
-      <Route path="/osint/phone" component={() => <AuthProtectedRoute component={PhoneLookup} />} />
-      <Route path="/osint/social" component={() => <AuthProtectedRoute component={SocialMedia} />} />
-      <Route path="/osint/username" component={() => <AuthProtectedRoute component={UsernameCheckPage} />} />
-      <Route path="/osint/whois" component={() => <AuthProtectedRoute component={DomainAnalysis} />} />
-      
-      {/* Tools Menu */}
-      <Route path="/tools/hash" component={() => <AuthProtectedRoute component={HashGenerator} />} />
-      <Route path="/tools/base64" component={() => <AuthProtectedRoute component={Base64Tool} />} />
-      <Route path="/tools/url" component={() => <AuthProtectedRoute component={Dashboard} />} />
-      <Route path="/tools/portscan" component={() => <AuthProtectedRoute component={Dashboard} />} />
-      <Route path="/tools/password" component={() => <AuthProtectedRoute component={PasswordGenerator} />} />
-      <Route path="/tools/qrcode" component={() => <AuthProtectedRoute component={Dashboard} />} />
-      
-      {/* Breach Check Menu */}
-      <Route path="/breach/email" component={() => <AuthProtectedRoute component={EmailBreachCheck} />} />
-      <Route path="/breach/password" component={() => <AuthProtectedRoute component={Dashboard} />} />
-      <Route path="/breach/domain" component={() => <AuthProtectedRoute component={Dashboard} />} />
-      
-      {/* Data Menu */}
-      <Route path="/data/history" component={() => <AuthProtectedRoute component={SearchHistory} />} />
-      <Route path="/data/bookmarks" component={() => <AuthProtectedRoute component={Bookmarks} />} />
-      <Route path="/data/export" component={() => <AuthProtectedRoute component={Dashboard} />} />
       
       <Route component={NotFound} />
     </Switch>

@@ -1,5 +1,5 @@
 import { db, sqlite } from './db';
-import { users, sessions, searches, bookmarks, userSettings, activityLogs, scripts, stats } from '@shared/schema';
+import { users, sessions, searches, bookmarks, userSettings, activityLogs, scripts, stats, menuCategories, menuItems } from '@shared/schema';
 import bcrypt from 'bcryptjs';
 import { eq } from 'drizzle-orm';
 
@@ -120,6 +120,38 @@ export async function initializeDatabase() {
         total_scripts INTEGER NOT NULL DEFAULT 0,
         active_users INTEGER NOT NULL DEFAULT 0,
         FOREIGN KEY (user_id) REFERENCES users(id)
+      )
+    `);
+
+    sqlite.exec(`
+      CREATE TABLE IF NOT EXISTS menu_categories (
+        id TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))),
+        name TEXT NOT NULL,
+        slug TEXT UNIQUE NOT NULL,
+        description TEXT,
+        icon TEXT NOT NULL,
+        "order" INTEGER NOT NULL DEFAULT 0,
+        is_active INTEGER NOT NULL DEFAULT 1,
+        created_at INTEGER DEFAULT (unixepoch()) NOT NULL,
+        updated_at INTEGER DEFAULT (unixepoch()) NOT NULL
+      )
+    `);
+
+    sqlite.exec(`
+      CREATE TABLE IF NOT EXISTS menu_items (
+        id TEXT PRIMARY KEY DEFAULT (lower(hex(randomblob(16)))),
+        category_id TEXT NOT NULL,
+        name TEXT NOT NULL,
+        slug TEXT NOT NULL,
+        description TEXT,
+        icon TEXT,
+        url TEXT,
+        route TEXT,
+        "order" INTEGER NOT NULL DEFAULT 0,
+        is_active INTEGER NOT NULL DEFAULT 1,
+        created_at INTEGER DEFAULT (unixepoch()) NOT NULL,
+        updated_at INTEGER DEFAULT (unixepoch()) NOT NULL,
+        FOREIGN KEY (category_id) REFERENCES menu_categories(id)
       )
     `);
 

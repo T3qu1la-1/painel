@@ -72,6 +72,7 @@ export default function AdminPanel() {
     slug: '',
     description: '',
     icon: '',
+    url: '',
     route: '',
     order: 0
   });
@@ -160,7 +161,7 @@ export default function AdminPanel() {
         description: "Novo item foi criado com sucesso",
       });
       queryClient.invalidateQueries({ queryKey: ["/api/admin/menu/items"] });
-      setNewMenuItem({ categoryId: '', name: '', slug: '', description: '', icon: '', route: '', order: 0 });
+      setNewMenuItem({ categoryId: '', name: '', slug: '', description: '', icon: '', url: '', route: '', order: 0 });
     },
     onError: (error: any) => {
       toast({
@@ -191,10 +192,18 @@ export default function AdminPanel() {
 
   const handleCreateMenuItem = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!newMenuItem.categoryId || !newMenuItem.name || !newMenuItem.route) {
+    if (!newMenuItem.categoryId || !newMenuItem.name || !newMenuItem.slug) {
       toast({
         title: "Campos obrigatórios",
-        description: "Preencha categoria, nome e rota",
+        description: "Preencha categoria, nome e slug",
+        variant: "destructive",
+      });
+      return;
+    }
+    if (!newMenuItem.url && !newMenuItem.route) {
+      toast({
+        title: "URL ou Rota obrigatória",
+        description: "Preencha pelo menos uma URL ou rota",
         variant: "destructive",
       });
       return;
@@ -446,17 +455,37 @@ export default function AdminPanel() {
                       id="item-name"
                       value={newMenuItem.name}
                       onChange={(e) => setNewMenuItem({...newMenuItem, name: e.target.value})}
-                      placeholder="Lookup de Email"
+                      placeholder="Have I Been Pwned"
                       data-testid="input-item-name"
                     />
                   </div>
                   <div className="grid gap-2">
-                    <Label htmlFor="item-route">Rota</Label>
+                    <Label htmlFor="item-slug">Slug</Label>
+                    <Input
+                      id="item-slug"
+                      value={newMenuItem.slug}
+                      onChange={(e) => setNewMenuItem({...newMenuItem, slug: e.target.value})}
+                      placeholder="haveibeenpwned"
+                      data-testid="input-item-slug"
+                    />
+                  </div>
+                  <div className="grid gap-2">
+                    <Label htmlFor="item-url">URL da Ferramenta</Label>
+                    <Input
+                      id="item-url"
+                      value={newMenuItem.url}
+                      onChange={(e) => setNewMenuItem({...newMenuItem, url: e.target.value})}
+                      placeholder="https://haveibeenpwned.com"
+                      data-testid="input-item-url"
+                    />
+                  </div>
+                  <div className="grid gap-2">
+                    <Label htmlFor="item-route">Rota Interna (opcional)</Label>
                     <Input
                       id="item-route"
                       value={newMenuItem.route}
                       onChange={(e) => setNewMenuItem({...newMenuItem, route: e.target.value})}
-                      placeholder="/osint/email"
+                      placeholder="/people/email"
                       data-testid="input-item-route"
                     />
                   </div>
@@ -476,7 +505,9 @@ export default function AdminPanel() {
                     <div key={item.id} className="flex items-center justify-between p-2 bg-gray-700 rounded">
                       <div>
                         <span className="text-white font-medium">{item.name}</span>
-                        <span className="text-gray-400 text-sm block">{item.route}</span>
+                        <span className="text-gray-400 text-sm block">
+                          {item.url ? `🔗 ${item.url}` : `📁 ${item.route}`}
+                        </span>
                       </div>
                       <Badge variant={item.isActive ? "default" : "secondary"}>
                         {item.isActive ? "Ativo" : "Inativo"}

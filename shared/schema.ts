@@ -104,6 +104,35 @@ export const stats = sqliteTable("stats", {
   activeUsers: integer("active_users").notNull().default(0),
 });
 
+// Menu categories - Categories for organizing tools
+export const menuCategories = sqliteTable("menu_categories", {
+  id: text("id").primaryKey().default(sql`(lower(hex(randomblob(16))))`),
+  name: text("name").notNull(),
+  slug: text("slug").notNull().unique(),
+  description: text("description"),
+  icon: text("icon").notNull(),
+  order: integer("order").notNull().default(0),
+  isActive: integer("is_active", { mode: "boolean" }).notNull().default(true),
+  createdAt: integer("created_at", { mode: "timestamp" }).default(sql`(unixepoch())`).notNull(),
+  updatedAt: integer("updated_at", { mode: "timestamp" }).default(sql`(unixepoch())`).notNull(),
+});
+
+// Menu items - Individual tools within categories
+export const menuItems = sqliteTable("menu_items", {
+  id: text("id").primaryKey().default(sql`(lower(hex(randomblob(16))))`),
+  categoryId: text("category_id").references(() => menuCategories.id).notNull(),
+  name: text("name").notNull(),
+  slug: text("slug").notNull(),
+  description: text("description"),
+  icon: text("icon"),
+  url: text("url"), // External tool URL
+  route: text("route"), // Internal route if applicable  
+  order: integer("order").notNull().default(0),
+  isActive: integer("is_active", { mode: "boolean" }).notNull().default(true),
+  createdAt: integer("created_at", { mode: "timestamp" }).default(sql`(unixepoch())`).notNull(),
+  updatedAt: integer("updated_at", { mode: "timestamp" }).default(sql`(unixepoch())`).notNull(),
+});
+
 // Indexes for better performance
 export const userEmailIndex = index("user_email_idx").on(users.email);
 export const userUsernameIndex = index("user_username_idx").on(users.username);
@@ -157,6 +186,18 @@ export const insertStatsSchema = createInsertSchema(stats).omit({
   date: true,
 });
 
+export const insertMenuCategorySchema = createInsertSchema(menuCategories).omit({
+  id: true,
+  createdAt: true,
+  updatedAt: true,
+});
+
+export const insertMenuItemSchema = createInsertSchema(menuItems).omit({
+  id: true,
+  createdAt: true,
+  updatedAt: true,
+});
+
 // Type exports
 export type User = typeof users.$inferSelect;
 export type InsertUser = z.infer<typeof insertUserSchema>;
@@ -181,6 +222,12 @@ export type InsertScript = z.infer<typeof insertScriptSchema>;
 
 export type Stats = typeof stats.$inferSelect;
 export type InsertStats = z.infer<typeof insertStatsSchema>;
+
+export type MenuCategory = typeof menuCategories.$inferSelect;
+export type InsertMenuCategory = z.infer<typeof insertMenuCategorySchema>;
+
+export type MenuItem = typeof menuItems.$inferSelect;
+export type InsertMenuItem = z.infer<typeof insertMenuItemSchema>;
 
 // OSINT result types
 export interface EmailLookupResult {

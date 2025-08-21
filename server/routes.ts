@@ -14,6 +14,7 @@ import { applySecurityMiddleware, authenticateToken, requireAdmin } from "./secu
 import { registerOSINTRoutes } from "./osint-routes";
 import { registerRealAPIRoutes } from "./routes-real-apis";
 import { registerAdminRoutes } from "./admin-routes";
+import menuRoutes from "./routes/menu";
 
 function validateRequest(schema: z.ZodSchema, data: any) {
   try {
@@ -42,6 +43,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
   
   // Registrar rotas administrativas
   registerAdminRoutes(app);
+  
+  // Registrar rotas de menu
+  app.use("/api/admin/menu", menuRoutes);
 
   // ========================
   // API ROUTES PROTEGIDAS
