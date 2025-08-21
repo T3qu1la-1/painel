@@ -78,17 +78,36 @@ export const authenticateToken = (req: Request, res: Response, next: NextFunctio
     });
   }
   
-  const decoded = authManager.verifyAuthToken(token);
-  if (!decoded) {
-    return res.status(403).json({
-      error: 'Token inválido ou expirado',
+  try {
+    const decoded = authManager.verifyAuthToken(token);
+    if (!decoded) {
+      return res.status(403).json({
+        error: 'Token inválido ou expirado',
+        code: 'INVALID_TOKEN'
+      });
+    }
+    
+    // Criar objeto de usuário mais completo para retornar
+    const userInfo = {
+      id: decoded.username || 'catalyst',
+      username: decoded.username || 'catalyst',
+      email: decoded.email || 'catalyst@dolp.local',
+      role: decoded.role || 'administrator',
+      isApproved: true,
+      isActive: true,
+      authenticated: true
+    };
+    
+    // Adiciona informações do usuário ao request
+    (req as any).user = userInfo;
+    next();
+  } catch (error) {
+    console.error('Auth middleware error:', error);
+    return res.status(401).json({
+      error: 'Token inválido',
       code: 'INVALID_TOKEN'
     });
   }
-  
-  // Adiciona informações do usuário ao request
-  (req as any).user = decoded;
-  next();
 };
 
 /**

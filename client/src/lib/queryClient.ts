@@ -12,7 +12,7 @@ export async function apiRequest(url: string, options?: RequestInit): Promise<an
   // Get access token from localStorage
   const accessToken = localStorage.getItem("access_token");
   
-  const headers: HeadersInit = {
+  const headers: Record<string, string> = {
     "Content-Type": "application/json",
     ...options?.headers,
   };

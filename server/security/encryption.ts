@@ -93,10 +93,11 @@ export function verifyPassword(password: string, hash: string): boolean {
 /**
  * Gera token JWT seguro
  */
+// Usar uma chave fixa para desenvolvimento
+const JWT_SECRET = process.env.JWT_SECRET || 'dolp-osint-panel-secret-key-2024';
+
 export function generateSecureToken(payload: any): string {
-  const secret = process.env.JWT_SECRET || crypto.randomBytes(64).toString('hex');
-  
-  return jwt.sign(payload, secret, {
+  return jwt.sign(payload, JWT_SECRET, {
     expiresIn: '24h',
     algorithm: 'HS256',
     issuer: 'osint-panel',
@@ -108,9 +109,7 @@ export function generateSecureToken(payload: any): string {
  * Verifica token JWT
  */
 export function verifyToken(token: string): any {
-  const secret = process.env.JWT_SECRET || crypto.randomBytes(64).toString('hex');
-  
-  return jwt.verify(token, secret, {
+  return jwt.verify(token, JWT_SECRET, {
     algorithms: ['HS256'],
     issuer: 'osint-panel',
     audience: 'osint-users'
