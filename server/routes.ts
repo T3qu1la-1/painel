@@ -26,6 +26,7 @@ import {
   sanitizeInput,
   ADMIN_CREDENTIALS
 } from "./auth";
+import { registerOSINTRoutes } from "./osint-routes";
 
 function validateRequest(schema: z.ZodSchema, data: any) {
   try {
@@ -79,6 +80,8 @@ const requireApproved = (req: any, res: any, next: any) => {
 };
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Register OSINT routes
+  registerOSINTRoutes(app);
   
   // Initialize default admin on startup
   storage.createDefaultAdmin().catch(console.error);
@@ -534,6 +537,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(bookmarks);
     } catch (error) {
       res.status(500).json({ message: "Failed to fetch bookmarks" });
+    }
+  });
+
+  // Get current user route
+  app.get('/api/auth/me', authenticateToken, async (req: any, res) => {
+    try {
+      res.json(req.user);
+    } catch (error) {
+      console.error('Get current user error:', error);
+      res.status(500).json({ message: 'Erro interno do servidor' });
     }
   });
 

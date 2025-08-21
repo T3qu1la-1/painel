@@ -150,7 +150,7 @@ export async function initializeDatabase() {
     }
 
     // Create default stats entry
-    const statsExists = await db.select().from(stats).where(eq(stats.userId, null)).limit(1);
+    const statsExists = await db.select().from(stats).limit(1);
     
     if (statsExists.length === 0) {
       await db.insert(stats).values({
