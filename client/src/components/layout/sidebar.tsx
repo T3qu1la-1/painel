@@ -1,5 +1,6 @@
 import { Link, useLocation } from "wouter";
 import { cn } from "@/lib/utils";
+import { useState } from "react";
 import { 
   Home,
   Mail,
@@ -17,18 +18,103 @@ import {
   Eye,
   Database,
   Network,
-  Smartphone
+  Smartphone,
+  ChevronDown,
+  ChevronRight,
+  Target,
+  Zap,
+  Code,
+  FileText,
+  Image,
+  Activity
 } from "lucide-react";
 
-const osintItems = [
-  { name: "Dashboard", path: "/", icon: Home },
-  { name: "Email Lookup", path: "/email-lookup", icon: Mail },
-  { name: "Domain Analysis", path: "/domain-analysis", icon: Globe },
-  { name: "IP Geolocation", path: "/ip-geolocation", icon: MapPin },
-  { name: "Social Media", path: "/social-media", icon: Users },
-  { name: "Phone Lookup", path: "/phone-lookup", icon: Phone },
-  { name: "Search History", path: "/search-history", icon: History },
-  { name: "Bookmarks", path: "/bookmarks", icon: Bookmark },
+// Estrutura de menu hierárquico
+const menuStructure = [
+  {
+    name: "Dashboard",
+    path: "/",
+    icon: Home,
+    type: "single"
+  },
+  {
+    name: "Motores de Busca",
+    icon: Search,
+    type: "category",
+    children: [
+      { name: "Busca Geral", path: "/search-engines/general", icon: Search },
+      { name: "Busca Especializada", path: "/search-engines/specialty", icon: Target },
+      { name: "Busca Privada", path: "/search-engines/private", icon: Shield },
+      { name: "Busca Nacional", path: "/search-engines/national", icon: Globe }
+    ]
+  },
+  {
+    name: "Investigação Pessoas",
+    icon: Users,
+    type: "category", 
+    children: [
+      { name: "Email OSINT", path: "/people/email", icon: Mail },
+      { name: "Telefone OSINT", path: "/people/phone", icon: Smartphone },
+      { name: "Username Check", path: "/people/username", icon: User },
+      { name: "Investigação Geral", path: "/people/general", icon: Users }
+    ]
+  },
+  {
+    name: "Redes Sociais",
+    icon: Users,
+    type: "category",
+    children: [
+      { name: "Twitter/X", path: "/social/twitter", icon: Users },
+      { name: "Facebook", path: "/social/facebook", icon: Users },
+      { name: "Instagram", path: "/social/instagram", icon: Users },
+      { name: "LinkedIn", path: "/social/linkedin", icon: Users },
+      { name: "Reddit", path: "/social/reddit", icon: Users },
+      { name: "Telegram", path: "/social/telegram", icon: Users },
+      { name: "GitHub", path: "/social/github", icon: Code }
+    ]
+  },
+  {
+    name: "Análise Técnica",
+    icon: Network,
+    type: "category",
+    children: [
+      { name: "Domínios & DNS", path: "/technical/domains", icon: Globe },
+      { name: "IP & Geolocalização", path: "/technical/ip", icon: MapPin },
+      { name: "Threat Intelligence", path: "/technical/threat", icon: Shield },
+      { name: "Código & Pastebins", path: "/technical/code", icon: Code },
+      { name: "OSINT Avançado", path: "/technical/advanced", icon: Zap }
+    ]
+  },
+  {
+    name: "Mídia & Conteúdo",
+    icon: Image,
+    type: "category",
+    children: [
+      { name: "Imagens & Mídia", path: "/media/images", icon: Image },
+      { name: "Documentos", path: "/media/documents", icon: FileText },
+      { name: "Web Monitoring", path: "/media/monitoring", icon: Eye },
+      { name: "Fact Checking", path: "/media/factcheck", icon: Shield }
+    ]
+  },
+  {
+    name: "Ferramentas Especiais",
+    icon: Activity,
+    type: "category",
+    children: [
+      { name: "Dark Web", path: "/special/darkweb", icon: Eye },
+      { name: "Maritime OSINT", path: "/special/maritime", icon: MapPin },
+      { name: "Gaming Platforms", path: "/special/gaming", icon: Users }
+    ]
+  },
+  {
+    name: "Histórico & Favoritos",
+    icon: History,
+    type: "category",
+    children: [
+      { name: "Search History", path: "/search-history", icon: History },
+      { name: "Bookmarks", path: "/bookmarks", icon: Bookmark }
+    ]
+  }
 ];
 
 // Motores de Busca Gerais  
@@ -346,6 +432,15 @@ const ferramentasUteis = [
 
 export default function Sidebar() {
   const [location] = useLocation();
+  const [expandedMenus, setExpandedMenus] = useState<string[]>([]);
+  
+  const toggleMenu = (menuName: string) => {
+    setExpandedMenus(prev => 
+      prev.includes(menuName) 
+        ? prev.filter(name => name !== menuName)
+        : [...prev, menuName]
+    );
+  };
 
   return (
     <aside className="w-80 bg-gray-800 text-white flex flex-col h-full">
@@ -361,77 +456,76 @@ export default function Sidebar() {
           <div className="space-y-2">
             <div className="px-3 py-2">
               <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
-                OSINT
+                PAINEL OSINT
               </h3>
             </div>
             <div className="space-y-1">
-              {osintItems.map((item) => {
+              {menuStructure.map((item) => {
                 const Icon = item.icon;
-                const isActive = location === item.path;
+                const isExpanded = expandedMenus.includes(item.name);
+                
+                if (item.type === "single") {
+                  const isActive = location === item.path;
+                  return (
+                    <Link key={item.path!} href={item.path!}>
+                      <div 
+                        className={cn(
+                          "osint-nav-item cursor-pointer",
+                          isActive ? "osint-nav-item-active" : "osint-nav-item-inactive hover:bg-gray-700"
+                        )}
+                        data-testid={`nav-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
+                      >
+                        <Icon className="w-5 h-5 mr-3" />
+                        {item.name}
+                      </div>
+                    </Link>
+                  );
+                }
                 
                 return (
-                  <Link key={item.path} href={item.path}>
+                  <div key={item.name} className="space-y-1">
                     <div 
-                      className={cn(
-                        "osint-nav-item cursor-pointer",
-                        isActive ? "osint-nav-item-active" : "osint-nav-item-inactive hover:bg-gray-700"
-                      )}
-                      data-testid={`nav-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
+                      className="osint-nav-item cursor-pointer osint-nav-item-inactive hover:bg-gray-700"
+                      onClick={() => toggleMenu(item.name)}
                     >
                       <Icon className="w-5 h-5 mr-3" />
-                      {item.name}
+                      <span className="flex-1">{item.name}</span>
+                      {isExpanded ? (
+                        <ChevronDown className="w-4 h-4" />
+                      ) : (
+                        <ChevronRight className="w-4 h-4" />
+                      )}
                     </div>
-                  </Link>
+                    
+                    {isExpanded && item.children && (
+                      <div className="ml-6 space-y-1">
+                        {item.children.map((child) => {
+                          const ChildIcon = child.icon;
+                          const isChildActive = location === child.path;
+                          
+                          return (
+                            <Link key={child.path} href={child.path}>
+                              <div 
+                                className={cn(
+                                  "osint-nav-item cursor-pointer text-sm",
+                                  isChildActive ? "osint-nav-item-active" : "osint-nav-item-inactive hover:bg-gray-700"
+                                )}
+                                data-testid={`nav-${child.name.toLowerCase().replace(/\s+/g, '-')}`}
+                              >
+                                <ChildIcon className="w-4 h-4 mr-2" />
+                                {child.name}
+                              </div>
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
                 );
               })}
             </div>
           </div>
 
-          {/* Ferramentas Úteis Section com centenas de ferramentas do awesome-osint */}
-          <div className="space-y-4 border-t border-gray-700 pt-4 mt-4">
-            <div className="px-3 py-2">
-              <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
-                FERRAMENTAS ÚTEIS
-                <span className="text-xs text-gray-500 ml-2">(500+ Tools)</span>
-              </h3>
-            </div>
-            
-            <div className="max-h-[60vh] overflow-y-auto space-y-3">
-              {ferramentasUteis.map((category) => (
-                <div key={category.category} className="space-y-1">
-                  <div className="px-3 py-1">
-                    <h4 className="text-xs font-medium text-gray-500 uppercase tracking-wide">
-                      {category.category}
-                    </h4>
-                  </div>
-                  <div className="space-y-1">
-                    {category.tools.map((tool) => {
-                      const Icon = tool.icon;
-                      
-                      return (
-                        <a 
-                          key={tool.name} 
-                          href={tool.url} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="block"
-                        >
-                          <div 
-                            className="osint-nav-item cursor-pointer osint-nav-item-inactive hover:bg-gray-700 transition-colors text-sm py-2"
-                            data-testid={`external-${tool.name.toLowerCase().replace(/\s+/g, '-')}`}
-                          >
-                            <Icon className="w-4 h-4 mr-2 flex-shrink-0" />
-                            <span className="truncate">{tool.name}</span>
-                            <ExternalLink className="w-3 h-3 ml-auto text-gray-500 flex-shrink-0" />
-                          </div>
-                        </a>
-                      );
-                    })}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </nav>
 
