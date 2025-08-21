@@ -46,7 +46,7 @@ class AuthManager {
         console.log('✅ Credenciais de admin criadas com segurança máxima');
       }
     } catch (error) {
-      console.error('❌ Erro ao inicializar credenciais:', error.message);
+      console.error('❌ Erro ao inicializar credenciais:', error instanceof Error ? error.message : String(error));
     }
   }
   
@@ -63,7 +63,7 @@ class AuthManager {
       const decryptedData = decrypt(encryptedData, this.masterKey);
       return JSON.parse(decryptedData);
     } catch (error) {
-      console.error('❌ Erro ao carregar credenciais:', error.message);
+      console.error('❌ Erro ao carregar credenciais:', error instanceof Error ? error.message : String(error));
       return null;
     }
   }
@@ -77,7 +77,7 @@ class AuthManager {
       const encryptedData = encrypt(jsonData, this.masterKey);
       fs.writeFileSync(this.adminCredentialsPath, encryptedData, 'utf8');
     } catch (error) {
-      console.error('❌ Erro ao salvar credenciais:', error.message);
+      console.error('❌ Erro ao salvar credenciais:', error instanceof Error ? error.message : String(error));
       throw error;
     }
   }
@@ -173,7 +173,7 @@ class AuthManager {
       };
       
     } catch (error) {
-      console.error('❌ Erro na autenticação:', error.message);
+      console.error('❌ Erro na autenticação:', error instanceof Error ? error.message : String(error));
       return {
         success: false,
         message: 'Erro interno do sistema'
@@ -188,7 +188,7 @@ class AuthManager {
     try {
       return verifyToken(token);
     } catch (error) {
-      console.log(`⚠️ Token inválido: ${error.message}`);
+      console.log(`⚠️ Token inválido: ${error instanceof Error ? error.message : String(error)}`);
       return null;
     }
   }
@@ -211,7 +211,7 @@ class AuthManager {
       console.log('✅ Senha de admin atualizada com sucesso');
       return true;
     } catch (error) {
-      console.error('❌ Erro ao atualizar senha:', error.message);
+      console.error('❌ Erro ao atualizar senha:', error instanceof Error ? error.message : String(error));
       return false;
     }
   }
@@ -227,7 +227,7 @@ class AuthManager {
       const { password, ...safeInfo } = adminCreds;
       return safeInfo;
     } catch (error) {
-      console.error('❌ Erro ao obter informações do admin:', error.message);
+      console.error('❌ Erro ao obter informações do admin:', error instanceof Error ? error.message : String(error));
       return null;
     }
   }

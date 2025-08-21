@@ -43,7 +43,7 @@ export function encrypt(data: string, password?: string): string {
     
     return combined.toString('base64');
   } catch (error) {
-    throw new Error('Falha na criptografia: ' + error.message);
+    throw new Error('Falha na criptografia: ' + (error instanceof Error ? error.message : String(error)));
   }
 }
 
@@ -70,7 +70,7 @@ export function decrypt(encryptedData: string, password?: string): string {
     
     return decrypted;
   } catch (error) {
-    throw new Error('Falha na descriptografia: ' + error.message);
+    throw new Error('Falha na descriptografia: ' + (error instanceof Error ? error.message : String(error)));
   }
 }
 
